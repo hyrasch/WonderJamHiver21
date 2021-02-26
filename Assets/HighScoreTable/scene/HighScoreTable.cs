@@ -12,22 +12,7 @@ public class HighScoreTable : MonoBehaviour
         entryContainer = transform.Find("HighScoreEntryContainer");
         entryTemplate = entryContainer.Find("HighScoreEntryTemplate");
         entryTemplate.gameObject.SetActive(false);
-        /*
-        highScoreEntryList = new List<HighScoreEntry>()
-        {
-            new HighScoreEntry{score = 52000, name="AAA"},
-            new HighScoreEntry{score = 1000000, name="SUS"},
-            new HighScoreEntry{score = 48000, name="OSC"},
-            new HighScoreEntry{score = 35000, name="LUC"},
-            new HighScoreEntry{score = 30000, name="TIT"},
-            new HighScoreEntry{score = 25000, name="SHE"},
-            new HighScoreEntry{score = 20000, name="RAB"},
-            new HighScoreEntry{score = 10000, name="DAB"},
-            new HighScoreEntry{score = 5000, name="ULI"},
-            new HighScoreEntry{score = 100, name="RIT"}
-        };
-        */
-        //addHighScoreEntry(1000, "CCC");
+
         string jsonString = PlayerPrefs.GetString("highscoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
         //sorting
@@ -52,13 +37,6 @@ public class HighScoreTable : MonoBehaviour
             CreateHighScoreEntryTransform(highScoreEntry, entryContainer, highScoreEntryTransformList);
         }
         
-        /*
-        Highscores highscores = new Highscores { highscoreEntryList = highScoreEntryList };
-        string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString("highscoreTable", json);
-        PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetString("highscoreTable"));
-        */
     }
     private void CreateHighScoreEntryTransform(HighScoreEntry highScoreEntry,Transform container,List<Transform> transformList)
     {
@@ -87,13 +65,32 @@ public class HighScoreTable : MonoBehaviour
         string name = highScoreEntry.name;
         entryTransform.Find("nameText").GetComponent<Text>().text = name;
         entryTransform.Find("background").gameObject.SetActive(rank % 2 == 1);
-        if( rank ==1)
+        switch(rank)
         {
-            entryTransform.Find("nameText").GetComponent<Text>().color = Color.red;
-            entryTransform.Find("posText").GetComponent<Text>().color = Color.red;
-            entryTransform.Find("scoreText").GetComponent<Text>().color = Color.red;
+            default:
+                entryTransform.Find("trophy").gameObject.SetActive(false);
+                break;
+            case 1:
+                entryTransform.Find("trophy").gameObject.SetActive(true);
+                entryTransform.Find("trophy").GetComponent<Image>().color = Color.white;
+                break;
 
+            case 2:
+                entryTransform.Find("trophy").gameObject.SetActive(true);
+                entryTransform.Find("trophy").GetComponent<Image>().color = new Color(0.7607844f, 0.7607844f, 0.7607844f,1f);
+                break;
 
+            case 3:
+                entryTransform.Find("trophy").gameObject.SetActive(true);
+                entryTransform.Find("trophy").GetComponent<Image>().color = new Color(1f, 0.516129f, 0, 1);
+                break;
+        }
+        if ( rank ==1)
+        {
+            Color green = new Color(0, 0.8490566f, 0.04675445f, 1f);
+            entryTransform.Find("nameText").GetComponent<Text>().color = green;
+            entryTransform.Find("posText").GetComponent<Text>().color = green;
+            entryTransform.Find("scoreText").GetComponent<Text>().color = green;
         }
         transformList.Add(entryTransform);
     }
