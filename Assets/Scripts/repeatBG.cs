@@ -12,7 +12,7 @@ public class repeatBG : MonoBehaviour
     {
         if(playerTransform.position.y - gameObject.transform.position.y > lenght)
         {
-            Vector2 pos = new Vector2(transform.position.x, transform.position.y + lenght * 2);
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y + lenght * 2, transform.position.z);
             transform.position = pos;
         }
     }
