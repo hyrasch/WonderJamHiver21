@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+/.idea.WonderJamHiver21.iml
+# Datasource local storage ignored files
+/../../../../../../../../:\Users\Guillaume\Desktop\WonderJamHiver21\.idea\.idea.WonderJamHiver21\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
