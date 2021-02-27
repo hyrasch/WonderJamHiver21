@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class Character2DController : MonoBehaviour
 {
+    public float health = 10f;
     public float speed;            // Character's movement speed
     public float jumpForce;        // Character's jump force
     public Transform groundCheck;  // Transform of the ground checking object
