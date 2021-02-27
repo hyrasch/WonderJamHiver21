@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TetrisBlock : MonoBehaviour
@@ -45,7 +46,19 @@ public class TetrisBlock : MonoBehaviour
     public void SpawnInGameWorld() {
         InitAttr();
         
+        StartCoroutine(ColorRandomizer());
+    }
+
+    private IEnumerator ColorRandomizer()
+    {
+        const int nbRandomizer = 25;
+        for (var i = 0; i < nbRandomizer; i++)
+        {
+            _SpriteComponent.color = _StaticAttribute._effectColor[i % _StaticAttribute._effectColor.Count];
+            yield return new WaitForSeconds(.005f * i);
+        }
+        
         _AttachedEffect = ChooseRandomEffect();
-        _SpriteComponent.color = _StaticAttribute._effectColor[(int)_AttachedEffect];
+        _SpriteComponent.color = _StaticAttribute._effectColor[(int) _AttachedEffect];
     }
 }
