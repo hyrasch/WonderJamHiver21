@@ -430,7 +430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1039436729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -474,6 +474,7 @@ MonoBehaviour:
   Player2Score: {fileID: 1180744148}
   Player1Name: {fileID: 1259238960}
   Player2Name: {fileID: 1416073989}
+  WinnerName: {fileID: 1692692128}
 --- !u!114 &1039436731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1329,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 300
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
