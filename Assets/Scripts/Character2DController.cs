@@ -55,6 +55,7 @@ public class Character2DController : MonoBehaviour
 
         // Updating character's velocity
         _rb.velocity = new Vector2(_move * speed, _rb.velocity.y);
+        
     }
 
     private void Update() {

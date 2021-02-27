@@ -12,8 +12,8 @@ public class repeatBG : MonoBehaviour
 
     private void Start()
     {
-        posBG1 = -3.19213f;
-        posBG2 = 4.599999f;
+        posBG1 = -3.82f;
+        posBG2 = 3.960001f;
     }
 
     private void Update()
@@ -25,7 +25,7 @@ public class repeatBG : MonoBehaviour
                 for (int j = 0; j < 7; j++)
                 {
                     var gameObject = new GameObject();
-                    var pos = new Vector3(-12.09f + (j * 2.58f), (posBG1 + 2*lenght) + (i * 2.5899999f ), 4);
+                    var pos = new Vector3(-7.49f + (j * 2.59f), (posBG1 + 2*lenght) + (i * 2.59f ), 4);
                     gameObject.transform.position = pos;
                     var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
                     var sprite = Resources.Load<Sprite>("stoneBG");
@@ -43,7 +43,7 @@ public class repeatBG : MonoBehaviour
                 for (int j = 0; j < 7; j++)
                 {
                     var gameObject = new GameObject();
-                    var pos = new Vector3(-12.09f + (j * 2.58f), (posBG2 + 2*lenght) + (i * 2.5899999f ), 4);
+                    var pos = new Vector3(-7.49f + (j * 2.59f), (posBG2 + 2*lenght) + (i * 2.59f ), 4);
                     gameObject.transform.position = pos;
                     var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
                     var sprite = Resources.Load<Sprite>("stoneBG");
