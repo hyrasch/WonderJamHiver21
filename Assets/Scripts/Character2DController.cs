@@ -49,13 +49,15 @@ public class Character2DController : MonoBehaviour
 
         // Updating character's status compared to his collision to ground
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        // If the character is landing
-        if (!wasGrounded && _isGrounded)
-            onLandEvent.Invoke();
+
+        switch (wasGrounded) {
+            case false when _isGrounded: // If the character is landing
+                onLandEvent.Invoke();
+                break;
+        }
 
         // Updating character's velocity
         _rb.velocity = new Vector2(_move * speed, _rb.velocity.y);
-        
     }
 
     private void Update() {
@@ -70,14 +72,14 @@ public class Character2DController : MonoBehaviour
         switch (_jump) {
             case true when _extraJumps > 0: // If Jumping with extra jump
                 // Impulse up
-                _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
                 _extraJumps--;
                 // Invoking jump event
                 onJumpEvent.Invoke();
                 break;
             case true when _extraJumps == 0 && _isGrounded: // If jumping when grounded
                 // Impulse up
-                _rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+                _rb.velocity = new Vector2(_rb.velocity.x, jumpForce);
                 // Invoking jump event
                 onJumpEvent.Invoke();
                 break;
