@@ -240,6 +240,7 @@ MonoBehaviour:
   - {fileID: 7774709642219740947, guid: 8239c827f88a8f44d80698373ff485a4, type: 3}
   parent: {fileID: 1041073423}
   timeBetweenDrop: 2
+  fallSpeed: 0.25
 --- !u!4 &70420873
 Transform:
   m_ObjectHideFlags: 0

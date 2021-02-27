@@ -20,11 +20,11 @@ public class TetrisBlock : MonoBehaviour
         
     }
 
-    void RotateRight() {
+    public void RotateRight() {
         transform.Rotate(0,0,90);
     }
 
-    void RotateLeft(){
+    public void RotateLeft() {
         transform.Rotate(0, 0, -90);
     }
 
