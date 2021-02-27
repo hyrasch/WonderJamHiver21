@@ -221,7 +221,9 @@ MonoBehaviour:
       _controllerMapLayoutManagerSettings:
         _enabled: 1
         _loadFromUserDataStore: 1
-        _ruleSets: []
+        _ruleSets:
+        - _enabled: 1
+          _id: 1
       _controllerMapEnablerSettings:
         _enabled: 1
         _ruleSets:
@@ -235,8 +237,8 @@ MonoBehaviour:
       _startPlaying: 1
       _defaultJoystickMaps:
       - _enabled: 0
-        _categoryId: 0
-        _layoutId: 1
+        _categoryId: 1
+        _layoutId: 0
       - _enabled: 0
         _categoryId: 2
         _layoutId: 1
@@ -250,7 +252,9 @@ MonoBehaviour:
       _controllerMapLayoutManagerSettings:
         _enabled: 1
         _loadFromUserDataStore: 1
-        _ruleSets: []
+        _ruleSets:
+        - _enabled: 1
+          _id: 0
       _controllerMapEnablerSettings:
         _enabled: 1
         _ruleSets:
@@ -819,7 +823,111 @@ MonoBehaviour:
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
-    controllerMapLayoutManagerRuleSets: []
+    controllerMapLayoutManagerRuleSets:
+    - _id: 1
+      _name: Master
+      _tag: Master
+      _rules:
+      - _tag: 
+        _categoryIds: 02000000
+        _layoutId: 2
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 2
+          _hardwareTypeGuidString: 
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 83b427e4-086f-47f3-bb06-be266abd1ca5
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+      - _tag: 
+        _categoryIds: 01000000
+        _layoutId: 0
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 2
+          _hardwareTypeGuidString: 
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+      - _tag: 
+        _categoryIds: 02000000
+        _layoutId: 1
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 0
+          _hardwareTypeGuidString: 00000000-0000-0000-0000-000000000000
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+      - _tag: 
+        _categoryIds: 01000000
+        _layoutId: 0
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 0
+          _hardwareTypeGuidString: 00000000-0000-0000-0000-000000000000
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+    - _id: 0
+      _name: Runner
+      _tag: Runner
+      _rules:
+      - _tag: 
+        _categoryIds: 02000000
+        _layoutId: 1
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 2
+          _hardwareTypeGuidString: 
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+      - _tag: 
+        _categoryIds: 01000000
+        _layoutId: 0
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 2
+          _hardwareTypeGuidString: 
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+      - _tag: 
+        _categoryIds: 02000000
+        _layoutId: 2
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 0
+          _hardwareTypeGuidString: 00000000-0000-0000-0000-000000000000
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
+      - _tag: 
+        _categoryIds: 01000000
+        _layoutId: 0
+        _controllerSetSelector:
+          _type: 1
+          _controllerType: 0
+          _hardwareTypeGuidString: 00000000-0000-0000-0000-000000000000
+          _hardwareIdentifier: 
+          _controllerTemplateTypeGuidString: 
+          _deviceInstanceGuidString: 
+          _customControllerSourceId: -1
+          _controllerId: -1
     controllerMapEnablerRuleSets:
     - _id: 0
       _name: Menu
@@ -895,7 +1003,7 @@ MonoBehaviour:
     mouseMapIdCounter: 1
     customControllerMapIdCounter: 0
     customControllerIdCounter: 0
-    controllerMapLayoutManagerSetIdCounter: 0
+    controllerMapLayoutManagerSetIdCounter: 2
     controllerMapEnablerSetIdCounter: 2
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
