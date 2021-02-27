@@ -17,7 +17,7 @@ public class repeatBG : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 10; j++)
             {
                 var gameObject = new GameObject();
                 var pos = new Vector3(-10f + (j * 2.59f), (posBG1 + 2 * lenght) + (i * 2.59f), 4);
@@ -33,7 +33,7 @@ public class repeatBG : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            for (int j = 0; j < 7; j++)
+            for (int j = 0; j < 10; j++)
             {
                 var gameObject = new GameObject();
                 var pos = new Vector3(-10f + (j * 2.59f), (posBG2 + 2 * lenght) + (i * 2.59f), 4);
@@ -53,7 +53,7 @@ public class repeatBG : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < 10; j++)
                 {
                     var gameObject = new GameObject();
                     var pos = new Vector3(-10f + (j * 2.59f), (posBG1 + 2 * lenght) + (i * 2.59f), 4);
@@ -71,7 +71,7 @@ public class repeatBG : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < 10; j++)
                 {
                     var gameObject = new GameObject();
                     var pos = new Vector3(-10f + (j * 2.59f), (posBG2 + 2 * lenght) + (i * 2.59f), 4);
