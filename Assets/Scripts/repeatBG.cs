@@ -12,27 +12,58 @@ public class repeatBG : MonoBehaviour
 
     private void Start()
     {
-        posBG1 = -3.82f;
-        posBG2 = 3.960001f;
+        posBG1 = -23.780001f;
+        posBG2 = -16f;
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                var gameObject = new GameObject();
+                var pos = new Vector3(-10f + (j * 2.59f), (posBG1 + 2 * lenght) + (i * 2.59f), 4);
+                gameObject.transform.position = pos;
+                var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                var sprite = Resources.Load<Sprite>("brickBG");
+                spriteRenderer.sprite = sprite;
+            }
+        }
+
+        posBG1 += 2 * lenght;
+
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                var gameObject = new GameObject();
+                var pos = new Vector3(-10f + (j * 2.59f), (posBG2 + 2 * lenght) + (i * 2.59f), 4);
+                gameObject.transform.position = pos;
+                var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                var sprite = Resources.Load<Sprite>("brickBG");
+                spriteRenderer.sprite = sprite;
+            }
+        }
+
+        posBG2 += 2 * lenght;
     }
 
     private void Update()
     {
-        if(transform.position.y > posBG1)
+        if (transform.position.y > posBG1)
         {
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
                     var gameObject = new GameObject();
-                    var pos = new Vector3(-7.49f + (j * 2.59f), (posBG1 + 2*lenght) + (i * 2.59f ), 4);
+                    var pos = new Vector3(-10f + (j * 2.59f), (posBG1 + 2 * lenght) + (i * 2.59f), 4);
                     gameObject.transform.position = pos;
                     var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
                     var sprite = Resources.Load<Sprite>("brickBG");
                     spriteRenderer.sprite = sprite;
                 }
             }
-            
+
             posBG1 += 2 * lenght;
         }
 
@@ -43,14 +74,14 @@ public class repeatBG : MonoBehaviour
                 for (int j = 0; j < 7; j++)
                 {
                     var gameObject = new GameObject();
-                    var pos = new Vector3(-7.49f + (j * 2.59f), (posBG2 + 2*lenght) + (i * 2.59f ), 4);
+                    var pos = new Vector3(-10f + (j * 2.59f), (posBG2 + 2 * lenght) + (i * 2.59f), 4);
                     gameObject.transform.position = pos;
                     var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
                     var sprite = Resources.Load<Sprite>("brickBG");
                     spriteRenderer.sprite = sprite;
                 }
             }
-            
+
             posBG2 += 2 * lenght;
         }
     }
