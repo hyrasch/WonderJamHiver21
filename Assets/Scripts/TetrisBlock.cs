@@ -45,7 +45,7 @@ public class TetrisBlock : MonoBehaviour
         float currentProba = 0;
         for (var i = 0; i < _StaticAttribute._effectProbabilty.Count; i++){
             currentProba += _StaticAttribute._effectProbabilty[i];
-            if (currentProba <= rand) {
+            if (rand <= currentProba) {
                 return (TetrisBlockStaticValue.BlockEffect)i;
             }
         }
