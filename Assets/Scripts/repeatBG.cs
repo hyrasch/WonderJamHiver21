@@ -12,34 +12,46 @@ public class repeatBG : MonoBehaviour
 
     private void Start()
     {
-        posBG1 = -1.34f;
-        posBG2 = 11.18f;
+        posBG1 = -3.19213f;
+        posBG2 = 4.599999f;
     }
 
     private void Update()
     {
         if(transform.position.y > posBG1)
         {
-            var gameObject = new GameObject();
-            var pos = new Vector3(-4.64f, posBG1 + 2*lenght, 4);
-            gameObject.transform.localScale = new Vector3(1.575756f, 1.575756f, 1.575756f);
-            gameObject.transform.position = pos;
-            var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-            var sprite = Resources.Load<Sprite>("castleBG");
-            spriteRenderer.sprite = sprite;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    var gameObject = new GameObject();
+                    var pos = new Vector3(-12.09f + (j * 2.58f), (posBG1 + 2*lenght) + (i * 2.5899999f ), 4);
+                    gameObject.transform.position = pos;
+                    var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                    var sprite = Resources.Load<Sprite>("stoneBG");
+                    spriteRenderer.sprite = sprite;
+                }
+            }
+            
             posBG1 += 2 * lenght;
         }
 
         if (transform.position.y > posBG2)
         {
-            var gameObject = new GameObject();
-            var pos = new Vector3(-4.64f, posBG2 + 2*lenght, 4);
-            gameObject.transform.localScale = new Vector3(1.575756f, 1.575756f, 1.575756f);
-            gameObject.transform.position = pos;
-            var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
-            var sprite = Resources.Load<Sprite>("castleBG");
-            spriteRenderer.sprite = sprite;
-            posBG2 +=  2 *lenght;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    var gameObject = new GameObject();
+                    var pos = new Vector3(-12.09f + (j * 2.58f), (posBG2 + 2*lenght) + (i * 2.5899999f ), 4);
+                    gameObject.transform.position = pos;
+                    var spriteRenderer = gameObject.AddComponent<SpriteRenderer>();
+                    var sprite = Resources.Load<Sprite>("stoneBG");
+                    spriteRenderer.sprite = sprite;
+                }
+            }
+            
+            posBG2 += 2 * lenght;
         }
     }
 }
