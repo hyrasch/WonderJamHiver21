@@ -3,7 +3,7 @@
 ### Authors
 - Mayeul MARSAUT
 - Sylvain FRANCO
-- Thimoté DURGEAUD
+- Thimotée DURGEAUD
 - Oscar TROSSEAU
 - Pierre COURTEL--SOURDEAU
 - Guillaume BLANC DE LANAUTE
