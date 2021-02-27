@@ -93,4 +93,17 @@ public class Character2DController : MonoBehaviour
         _move = _runner.GetAxis("Move Horizontal");
         _jump = _runner.GetButtonDown("Jump");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.tag == "blocks")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb && rb.velocity.y < 0)
+            {
+                FindObjectOfType<GameManager>().endGame();
+            }
+        }
+    }
 }

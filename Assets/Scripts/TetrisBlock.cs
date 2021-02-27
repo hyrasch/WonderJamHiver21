@@ -10,10 +10,15 @@ public class TetrisBlock : MonoBehaviour
     [SerializeField]
     TetrisBlockStaticValue _StaticAttribute;
 
+
+    Rigidbody2D rb;
     // Start is called before the first frame update
     private void Start()
     {
-        InitAttr();
+        rb = this.gameObject.GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, -5f);
+        //InitAttr();
+
     }
 
     private void InitAttr()
