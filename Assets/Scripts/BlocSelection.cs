@@ -6,157 +6,113 @@ using UnityEngine.UI;
 
 public class BlocSelection : MonoBehaviour
 {
+    enum SelectorDirection {
+        Up,
+        Down
+    }
 
     [SerializeField]
-    private GameObject[] prochainsBlocs;    //List contenant les 4 images utilisées pour prévisualiser les blocs qui arriveront
-    private int indexFirst; //Variable servant à déterminer l'index de l'image se situant le plus en haut
+    int _visibleBlocks;
+    [SerializeField]
+    Vector2 _distanceBetweenBlocks;
+    [SerializeField]
+    float _animationTime;
 
     [SerializeField]
-    private GameObject keyBlock;
+    GameObject _spriteRendererTemplate;
     [SerializeField]
-    private GameObject lBlock;
-    [SerializeField]
-    private GameObject longBlock;
-    [SerializeField]
-    private GameObject squareBlock;
-    [SerializeField]
-    private GameObject stairBlock;
-    [SerializeField]
-    private GameObject stairBlockF;
+    List<GameObject> _blockTemplate = new List<GameObject>(); // Blocks template to instantiate
+    List<KeyValuePair<GameObject, GameObject>> _spawnedBlocks; //Spawned block
+
 
     // Start is called before the first frame update
     void Start()
     {
-        indexFirst = 0;
-        prochainsBlocs[GetLastIndex()].GetComponent<Image>().color = new Color(1, 1, 1, 0);
+        _spawnedBlocks = new List<KeyValuePair<GameObject, GameObject>>();
+        SpawnInitialBlocks();
+    }
+
+    void SpawnInitialBlocks() {
+        for (int i = 0; i < _visibleBlocks; i++) {
+            Vector3 eulerRandomRotation = UnityEngine.Random.Range(0, 3) * new Vector3(0, 0, 90);
+            Vector2 position = - _distanceBetweenBlocks*i;
+            _spawnedBlocks.Add(AddBlock(UnityEngine.Random.Range(0, _blockTemplate.Count), position, Quaternion.Euler(eulerRandomRotation)));
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown("f"))  //TODO: à enlever, c'est là pour les tests
         {
-            addBloc(UnityEngine.Random.Range(0,6), UnityEngine.Random.Range(0, 5));
+            GameObject newBlock = SelectBlock();
+            Destroy(newBlock);
+            //AddBlock(UnityEngine.Random.Range(0,6));
         }
     }
 
-    public void addBloc(int type, int effect)
+    KeyValuePair<GameObject, GameObject> AddBlock(int BlockType, Vector2 Position, Quaternion Rotation)
     {
-        Sprite spriteOfBloc = null;
-        Color colorOfBloc = new Color();
+        GameObject block = Instantiate(_blockTemplate[BlockType]);
+        SpriteRenderer blockRenderer = block.GetComponent<SpriteRenderer>();
+        GameObject blockUIRenderer= Instantiate(_spriteRendererTemplate, Vector3.zero, Rotation, transform);
+        blockUIRenderer.GetComponent<RectTransform>().anchoredPosition = Position;
+        Image blockUIImage = blockUIRenderer.GetComponent<Image>();
+        blockUIImage.sprite = blockRenderer.sprite;
+        blockUIImage.preserveAspect = true;
+        KeyValuePair<GameObject, GameObject> res = new KeyValuePair<GameObject, GameObject>(blockUIRenderer, block);
+        block.SetActive(false);
+        return res;
+    }
 
-        switch (type)
+    public GameObject SelectBlock() {
+
+        GameObject selected = _spawnedBlocks[0].Value;
+        Destroy(_spawnedBlocks[0].Key);
+        _spawnedBlocks.RemoveAt(0);
+        if (selected != null) {
+            Vector3 eulerRandomRotation = UnityEngine.Random.Range(0, 3) * new Vector3(0,0,90);
+            Vector3 spawnPos = _spawnedBlocks[_spawnedBlocks.Count-1].Key.GetComponent<RectTransform>().anchoredPosition - _distanceBetweenBlocks;
+            _spawnedBlocks.Add(AddBlock(UnityEngine.Random.Range(0, _blockTemplate.Count), spawnPos, Quaternion.Euler(eulerRandomRotation)));
+            MoveUp();
+        }
+        return selected;
+    }
+
+    public void MoveUp() {
+        StartCoroutine(MoveEveryBloc(SelectorDirection.Up));
+    }
+
+    IEnumerator MoveEveryBloc(SelectorDirection Direction) {
+        Vector2 travelDirection = _distanceBetweenBlocks.normalized;
+        float distanceToTravel = _distanceBetweenBlocks.magnitude;
+        float speed = distanceToTravel / _animationTime;
+        float saveDistanceTraveled = 0;
+
+
+        List<RectTransform> _blockPosition = new List<RectTransform>();
+        foreach (KeyValuePair<GameObject,GameObject> Block in _spawnedBlocks)
         {
-            /*case 0:
-                spriteOfBloc = keyBlock;
-                break;
-            case 1:
-                spriteOfBloc = lBlock;
-                break;
-            case 2:
-                spriteOfBloc = longBlock;
-                break;
-            case 3:
-                spriteOfBloc = squareBlock;
-                break;
-            case 4:
-                spriteOfBloc = stairBlock;
-                break;
-            case 5:
-                spriteOfBloc = stairBlockF;
-                break;
-            default:
-                throw new Exception("Erreur: type de bloc invalide");
-        }*/
-        switch (effect)
-        {
-            case 0:
-                colorOfBloc = new Color(1f, 0.5f, 0.1f);  //Vaguement orange
-                break;
-            case 1:
-                colorOfBloc = Color.red;
-                break;
-            case 2:
-                colorOfBloc = Color.blue;
-                break;
-            case 3:
-                colorOfBloc = Color.green;
-                break;
-            case 4:
-                colorOfBloc = Color.yellow;
-                break;
-            default:
-                throw new Exception("Erreur: effet de bloc invalide");
+            _blockPosition.Add(Block.Key.GetComponent<RectTransform>());
         }
 
-        prochainsBlocs[GetLastIndex()].GetComponent<Image>().sprite = spriteOfBloc;
-        prochainsBlocs[GetLastIndex()].GetComponent<Image>().color = colorOfBloc;
-        StartCoroutine(MoveEveryBloc());
-    }
-
-    void IncrementIndexFirst()
-    {
-        if (indexFirst == 3)
-            indexFirst = 0;
-        else indexFirst++;
-    }
-
-    int GetLastIndex()
-    {
-        if (indexFirst == 0)
-            return 3;
-        else return indexFirst - 1;
-    }
-
-    IEnumerator MoveEveryBloc()
-    {
-        var totalTime=0f;
-        while(totalTime<1f)
+        while (true)
         {
-            var dt = Time.deltaTime;
-            totalTime += dt;
-            var colorFirst = prochainsBlocs[indexFirst].GetComponent<Image>().color;
-            var colorLast = prochainsBlocs[GetLastIndex()].GetComponent<Image>().color;
-
-            colorFirst.a = 1f-totalTime;
-            colorLast.a = totalTime;
-
-            // le premier bloc disparait
-            prochainsBlocs[indexFirst].GetComponent<Image>().color = colorFirst;
-
-            // le dernier bloc apparait
-            prochainsBlocs[GetLastIndex()].GetComponent<Image>().color = colorLast;
-            
-            //On déplace tout les blocs
-            foreach(var bloc in prochainsBlocs)
+            float step = distanceToTravel * Time.deltaTime;
+            foreach (RectTransform rect in _blockPosition)
             {
-                bloc.GetComponent<RectTransform>().anchoredPosition = new Vector2(bloc.GetComponent<RectTransform>().anchoredPosition.x, bloc.GetComponent<RectTransform>().anchoredPosition.y+dt*150); ;
+                rect.anchoredPosition += step * travelDirection;
+            }
+            saveDistanceTraveled += step;
+            float remainingDistance = Mathf.Max(0, distanceToTravel - saveDistanceTraveled);
+            if (remainingDistance <= 0)
+            {
+                break;
             }
             yield return null;
         }
-        var colorFirstEnd = prochainsBlocs[indexFirst].GetComponent<Image>().color;
-        var colorLastEnd = prochainsBlocs[GetLastIndex()].GetComponent<Image>().color;
 
-        colorFirstEnd.a = 0;
-        colorLastEnd.a = 1f;
-
-        // le premier bloc disparait
-        prochainsBlocs[indexFirst].GetComponent<Image>().color = colorFirstEnd;
-
-        // le dernier bloc apparait
-        prochainsBlocs[GetLastIndex()].GetComponent<Image>().color = colorLastEnd;
-
-
-        foreach (var bloc in prochainsBlocs)
-        {
-            Debug.Log(bloc.GetComponent<RectTransform>().anchoredPosition.y %25);
-            bloc.GetComponent<RectTransform>().anchoredPosition = new Vector2(bloc.GetComponent<RectTransform>().anchoredPosition.x, roundToNearest25(bloc.GetComponent<RectTransform>().anchoredPosition.y));
-        }
-
-        var tmpPos = prochainsBlocs[indexFirst].GetComponent<RectTransform>().anchoredPosition;
-        prochainsBlocs[indexFirst].GetComponent<RectTransform>().anchoredPosition = new Vector2(tmpPos.x, tmpPos.y - 600);
-        IncrementIndexFirst();
+        yield return null;
     }
 
     float roundToNearest25(float value)
