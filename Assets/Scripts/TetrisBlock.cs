@@ -41,17 +41,15 @@ public class TetrisBlock : MonoBehaviour
 
     private TetrisBlockStaticValue.BlockEffect ChooseRandomEffect()
     {
-        var population = new List<int>();
-        for (var i = 0; i < _StaticAttribute._effectProbabilty.Count; i++)
-        {
-            for (var j = 0; j < 100 * _StaticAttribute._effectProbabilty[i]; j++)
-            {
-                population.Add(i);
+        float rand = Random.value;
+        float currentProba = 0;
+        for (var i = 0; i < _StaticAttribute._effectProbabilty.Count; i++){
+            currentProba += _StaticAttribute._effectProbabilty[i];
+            if (currentProba <= rand) {
+                return (TetrisBlockStaticValue.BlockEffect)i;
             }
         }
-
-        return (TetrisBlockStaticValue.BlockEffect) population[
-            Random.Range(0, _StaticAttribute._effectProbabilty.Count)];
+        return (TetrisBlockStaticValue.BlockEffect)(_StaticAttribute._effectProbabilty.Count - 1);
     }
 
     public void SpawnInGameWorld()
