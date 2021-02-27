@@ -269,11 +269,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: King
       objectReference: {fileID: 0}
-    - target: {fileID: 5915930417105684639, guid: 2f79a0764ae0bca45af84cede8c1298a,
-        type: 3}
-      propertyPath: extraJumpsValue
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f79a0764ae0bca45af84cede8c1298a, type: 3}
 --- !u!1 &123374652
@@ -1029,31 +1024,12 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &276843240 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5915930417105684636, guid: 2f79a0764ae0bca45af84cede8c1298a,
-    type: 3}
-  m_PrefabInstance: {fileID: 48354618}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &276843241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5915930417105684632, guid: 2f79a0764ae0bca45af84cede8c1298a,
     type: 3}
   m_PrefabInstance: {fileID: 48354618}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &276843245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 276843240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17e30a1944e64164c8f03a031fb0b6a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lenght: 7.77
 --- !u!1 &290013374
 GameObject:
   m_ObjectHideFlags: 0

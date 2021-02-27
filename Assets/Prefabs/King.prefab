@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 5915930417105684639}
   - component: {fileID: 5915930417105684638}
   - component: {fileID: 5915930417105684637}
+  - component: {fileID: 276843245}
   m_Layer: 0
   m_Name: King
   m_TagString: Player
@@ -170,7 +171,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  extraJumpsValue: 1
+  extraJumpsValue: 10
   onLandEvent:
     m_PersistentCalls:
       m_Calls:
@@ -236,6 +237,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.11699736, y: -0.71742105}
   m_Size: {x: 0.624727, y: 1.7019539}
   m_Direction: 0
+--- !u!114 &276843245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5915930417105684636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17e30a1944e64164c8f03a031fb0b6a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lenght: 7.77
 --- !u!1 &5915930417484426134
 GameObject:
   m_ObjectHideFlags: 0
