@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockSelection : MonoBehaviour
+public class BlockDrop : MonoBehaviour
 {
     [SerializeField] private List<GameObject> blocks;
     [SerializeField] private Transform parent;
