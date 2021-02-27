@@ -15,6 +15,7 @@ public class TetrisBlock : MonoBehaviour
     private void Start()
     {
         InitAttr();
+        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -20f);
     }
 
     private void FixedUpdate()

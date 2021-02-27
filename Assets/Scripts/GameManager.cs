@@ -6,13 +6,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     bool gameIsEnded = false;
+    public GameOverScreen gameOverScreen;
+ 
+
     public void endGame()
     {
         if (!gameIsEnded)
         {
             Debug.Log("Game Over");
             gameIsEnded = true;
-            restart();
+            gameOverScreen.setup(0,0,"TEST1","TEST2");
+            //restart();
         }
     }
 

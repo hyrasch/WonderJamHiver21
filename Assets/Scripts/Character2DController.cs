@@ -100,7 +100,7 @@ public class Character2DController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.tag == "blocks")
+        if (collision.tag == "Block")
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb && rb.velocity.y < 0)
