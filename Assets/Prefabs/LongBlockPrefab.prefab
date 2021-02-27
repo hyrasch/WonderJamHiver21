@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 6522526573411130780}
   - component: {fileID: 6522526573411130781}
   - component: {fileID: 6522526573411130754}
-  - component: {fileID: 6522526573411130783}
+  - component: {fileID: 1113713585776552696}
   - component: {fileID: 4776588961019941013}
   m_Layer: 0
-  m_Name: LongBlock
+  m_Name: LongBlockPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &6522526573411130783
+--- !u!60 &1113713585776552696
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 32, y: 8}
+    oldSize: {x: 2, y: 0.5}
     newSize: {x: 32, y: 8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -130,19 +130,18 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 15.874718, y: 3.6576629}
-      - {x: 15.62488, y: 3.904597}
-      - {x: 15.501816, y: 4}
-      - {x: -15.496874, y: 4}
-      - {x: -15.626207, y: 3.8761795}
-      - {x: -15.756005, y: 3.752387}
-      - {x: -16.001204, y: 3.499983}
-      - {x: -15.996981, y: -3.5360448}
-      - {x: -15.542918, y: -3.999878}
-      - {x: 15.498789, y: -4}
-      - {x: 15.683963, y: -3.8206909}
-      - {x: 16.000732, y: -3.4990804}
-      - {x: 15.999033, y: 3.49988}
+    - - {x: 0.9902344, y: 0.23828125}
+      - {x: 0.9824219, y: 0.24609375}
+      - {x: 0.9746094, y: 0.25}
+      - {x: -0.9746094, y: 0.25}
+      - {x: -0.9863281, y: 0.24023438}
+      - {x: -1, y: 0.22460938}
+      - {x: -1, y: -0.22460938}
+      - {x: -0.9746094, y: -0.25}
+      - {x: 0.9746094, y: -0.25}
+      - {x: 0.9824219, y: -0.24414062}
+      - {x: 1, y: -0.2265625}
+      - {x: 1, y: 0.22460938}
 --- !u!114 &4776588961019941013
 MonoBehaviour:
   m_ObjectHideFlags: 0
