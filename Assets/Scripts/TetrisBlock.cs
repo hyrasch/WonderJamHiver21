@@ -75,18 +75,23 @@ public class TetrisBlock : MonoBehaviour
 
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Fire:
+                    Debug.Log("ça brule");
                     Fire(collision);
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Ice:
+                    Debug.Log("Glagla");
                     Ice();
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Explosion:
+                    Debug.Log("Tic Tac");
                     StartCoroutine(WaitForBoom(2.0f));
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Enemy:
+                    Debug.Log("Be careful");
                     Enemy();
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Malus:
+                    Debug.Log("Lucky you!");
                     Malus();
                     break;
             }
