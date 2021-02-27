@@ -9,6 +9,7 @@ public class Ennemy : MonoBehaviour
     public Transform playerTransform;
     public float speed;
     public float jumpForce;
+    public float jumpRadius;
 
     private Rigidbody2D rb;
 
@@ -44,7 +45,7 @@ public class Ennemy : MonoBehaviour
 
         currentPos = rb.position.x;
 
-        if (Mathf.Abs(lastPos - currentPos) < 0.01f && isGrounded == true)
+        if (Mathf.Abs(lastPos - currentPos) < jumpRadius && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
         }

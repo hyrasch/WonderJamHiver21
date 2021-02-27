@@ -114,7 +114,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 7774709642219740947}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dbd4740ce0b881b4e9526f22629eb7bf, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -171,4 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _StaticAttribute: {fileID: 1141849738734162183, guid: c69b41826dffc89408240b7eb0090b3b,
+    type: 3}
+  enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
