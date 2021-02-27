@@ -1,46 +1,50 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Save;
 
-public class Score : MonoBehaviour
+[Serializable]
+public class Score
 {
-    public List<string> FPlayerNames { get; } = new List<string>();
-    public List<string> SPlayerNames { get; } = new List<string>();
+    public List<Tuple<string, int>> Scores { get; private set; }
 
-    public List<int> FPlayerScores { get; } = new List<int>();
-    public List<int> SPlayerScores { get; } = new List<int>();
+    public Score()
+    {
+        Scores = new List<Tuple<string, int>>();
+    }
+    
+    public Score(List<Tuple<string, int>> scores)
+    {
+        Scores = scores;
+    }
 
-    private void SaveScore()
+    public void SaveScore()
     {
         SaveSystem.SaveScore(this);
     }
 
-    private void LoadScore()
+    public void LoadScore()
     {
-        var data = SaveSystem.LoadScore();
-        
-        FPlayerNames.Clear();
-        SPlayerNames.Clear();
-        
-        FPlayerScores.Clear();
-        SPlayerScores.Clear();
+        Scores = SaveSystem.LoadScore().Scores;
+    }
 
-        int i;
-        for (i = 0; i < data.FPlayerNames.Length; i++)
-        {
-            FPlayerNames.Add(data.FPlayerNames[i]);
-        }
-        for (i = 0; i < data.FPlayerScores.Length; i++)
-        {
-            FPlayerScores.Add(data.FPlayerScores[i]);
-        }
+    private void SortScore()
+    {
+        Scores.Sort((x, y) => y.Item2.CompareTo(x.Item2));
+    }
+
+    private void CleanScores()
+    {
+        Scores = Scores.Take(10).ToList();
+    }
+
+    public void AddScore(string playerName, int playerScore)
+    {
+        Scores.Add(Tuple.Create(playerName, playerScore));
+
+        if (Scores.Count < 10) return;
         
-        for (i = 0; i < data.SPlayerNames.Length; i++)
-        {
-            SPlayerNames.Add(data.SPlayerNames[i]);
-        }
-        for (i = 0; i < data.SPlayerScores.Length; i++)
-        {
-            SPlayerScores.Add(data.SPlayerScores[i]);
-        }
+        SortScore();
+        CleanScores();
     }
 }

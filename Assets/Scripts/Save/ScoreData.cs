@@ -1,36 +1,16 @@
-﻿[System.Serializable]
-public class ScoreData
+﻿using System;
+using System.Collections.Generic;
+
+namespace Save
 {
-    public string[] FPlayerNames { get; }
-    public string[] SPlayerNames { get; }
-    public int[] FPlayerScores { get; }
-    public int[] SPlayerScores { get; }
-
-    public ScoreData(Score score)
+    [Serializable]
+    public class ScoreData
     {
-        FPlayerNames = new string[score.FPlayerNames.Count];
-        SPlayerNames = new string[score.SPlayerNames.Count];
-        
-        FPlayerScores = new int[score.FPlayerScores.Count];
-        SPlayerScores = new int[score.SPlayerScores.Count];
+        public List<Tuple<string, int>> Scores { get; }
 
-        int i;
-        for (i = 0; i < FPlayerNames.Length; i++)
+        public ScoreData(Score score)
         {
-            FPlayerNames[i] = score.FPlayerNames[i];
-        }
-        for (i = 0; i < SPlayerNames.Length; i++)
-        {
-            SPlayerNames[i] = score.SPlayerNames[i];
-        }
-        
-        for (i = 0; i < FPlayerScores.Length; i++)
-        {
-            FPlayerScores[i] = score.FPlayerScores[i];
-        }
-        for (i = 0; i < SPlayerScores.Length; i++)
-        {
-            SPlayerScores[i] = score.SPlayerScores[i];
+            Scores = score.Scores;
         }
     }
 }
