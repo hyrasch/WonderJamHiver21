@@ -1594,6 +1594,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &344793189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 2555371376632259890, guid: ab336099bdf24c344ac90d0ade441003,
+    type: 3}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344793190}
+  m_Layer: 0
+  m_Name: Enemy Variant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344793190
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: -3983507029271219171, guid: ab336099bdf24c344ac90d0ade441003,
+    type: 3}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344793189}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357969159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2026,112 +2058,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.91, y: 2.4}
   m_EdgeRadius: 0
---- !u!1001 &509088082
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2551025769540822533, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268544, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268545, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: f38db5ecc09a26a488f6e53f5a5b13b6,
-        type: 3}
-    - target: {fileID: 2551025769951268546, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268546, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268546, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.5625
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268546, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2551025769951268551, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: playerTransform
-      value: 
-      objectReference: {fileID: 276843241}
-    - target: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2551025769951268546, guid: 08b2a6b551b0c324ba4744fe9ed8eb84, type: 3}
-  m_SourcePrefab: {fileID: 100100000, guid: 08b2a6b551b0c324ba4744fe9ed8eb84, type: 3}
 --- !u!1 &514662475
 GameObject:
   m_ObjectHideFlags: 0
@@ -7186,28 +7112,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1676858164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
-    type: 3}
-  m_PrefabInstance: {fileID: 509088082}
-  m_PrefabAsset: {fileID: 0}
---- !u!70 &1676858165
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676858164}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
-  m_Size: {x: 0.5, y: 0.9}
-  m_Direction: 0
 --- !u!1 &1694677490
 GameObject:
   m_ObjectHideFlags: 0
