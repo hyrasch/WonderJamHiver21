@@ -2,6 +2,7 @@
 
 public class Character2DController : MonoBehaviour
 {
+    public int health = 10;
     public float speed;
     public float jumpForce;
     public float moveInput;
@@ -37,6 +38,8 @@ public class Character2DController : MonoBehaviour
                 Flip();
             break;
         }
+
+        Debug.Log(health);
     }
 
     private void Update()
