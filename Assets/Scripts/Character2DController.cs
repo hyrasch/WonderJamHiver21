@@ -97,16 +97,26 @@ public class Character2DController : MonoBehaviour
         _jump = _runner.GetButtonDown("Jump");
     }
 
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.tag == "Block")
         {
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb && rb.velocity.y < 0)
+            if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
             {
-                FindObjectOfType<GameManager>().endGame();
+                this.health -= 11; //Dégats des blocs
             }
+        } else if (collision.tag == "Ennemy")
+        {
+            this.health -= 2; //dégats des ennemis
         }
+        Debug.Log(health);
+        if(health<=0)
+        {
+            FindObjectOfType<GameManager>().endGame();
+        }
+
     }
 }
