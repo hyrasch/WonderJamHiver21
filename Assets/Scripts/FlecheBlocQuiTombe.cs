@@ -23,7 +23,7 @@ public class FlecheBlocQuiTombe : MonoBehaviour
         pasDeDeplacement = (tailleArene) / (float)largeurAreneEnBloc;
         indexLane = 0;
         var tmpPos = GetComponent<RectTransform>().anchoredPosition;
-        tmpPos.x = pasDeDeplacement * indexLane + tailleDesBordures + pasDeDeplacement / 2f;
+        tmpPos.x = pasDeDeplacement * indexLane + tailleDesBordures + pasDeDeplacement / 2f + 150f; //150 c'est la taille de la moitié de la flèche rouge 
         GetComponent<RectTransform>().anchoredPosition = tmpPos;
     }
 
