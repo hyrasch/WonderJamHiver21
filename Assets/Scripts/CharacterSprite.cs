@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using static Utils;
 
 public class CharacterSprite : MonoBehaviour
@@ -8,7 +9,7 @@ public class CharacterSprite : MonoBehaviour
     private SpriteRenderer _spriteRenderer; // Character sprite
 
     private bool _isFacingRight = true; // Facing status of the sprite
-    
+
     private void Awake() {
         _rb = GetComponentInParent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
@@ -41,11 +42,12 @@ public class CharacterSprite : MonoBehaviour
      * Stops the current jumping / falling animation
      */
     public void StopJumpAnim() {
+        _animator.ResetTrigger(Jump);
         _animator.SetTrigger(Grounded);
     }
 
     /**
-     * Resets and starts the jumping animation
+     * Starts the jumping animation
      */
     public void StartJumpAnim() {
         _animator.ResetTrigger(Grounded);
