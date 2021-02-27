@@ -41,17 +41,15 @@ public class TetrisBlock : MonoBehaviour
 
     private TetrisBlockStaticValue.BlockEffect ChooseRandomEffect()
     {
-        var population = new List<int>();
-        for (var i = 0; i < _StaticAttribute._effectProbabilty.Count; i++)
-        {
-            for (var j = 0; j < 100 * _StaticAttribute._effectProbabilty[i]; j++)
-            {
-                population.Add(i);
+        float rand = Random.value;
+        float currentProba = 0;
+        for (var i = 0; i < _StaticAttribute._effectProbabilty.Count; i++){
+            currentProba += _StaticAttribute._effectProbabilty[i];
+            if (rand <= currentProba) {
+                return (TetrisBlockStaticValue.BlockEffect)i;
             }
         }
-
-        return (TetrisBlockStaticValue.BlockEffect) population[
-            Random.Range(0, _StaticAttribute._effectProbabilty.Count)];
+        return (TetrisBlockStaticValue.BlockEffect)(_StaticAttribute._effectProbabilty.Count - 1);
     }
 
     public void SpawnInGameWorld()
@@ -77,18 +75,23 @@ public class TetrisBlock : MonoBehaviour
 
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Fire:
+                    Debug.Log("ça brule");
                     Fire(collision);
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Ice:
+                    Debug.Log("Glagla");
                     Ice();
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Explosion:
+                    Debug.Log("Tic Tac");
                     StartCoroutine(WaitForBoom(2.0f));
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Enemy:
+                    Debug.Log("Be careful");
                     Enemy();
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Malus:
+                    Debug.Log("Lucky you!");
                     Malus();
                     break;
             }
