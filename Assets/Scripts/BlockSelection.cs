@@ -30,7 +30,7 @@ public class BlockSelection : MonoBehaviour
         
         _block = Instantiate(RandomBlock(), parent);
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
-        _tetrisBlock.SpawnInGameWorld(_block.transform.position, Vector3.zero, _block.transform.localScale);
+        _tetrisBlock.SpawnInGameWorld();
         _canSelect = false;
     }
 

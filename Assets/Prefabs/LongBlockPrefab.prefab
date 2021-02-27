@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2286848441c4afa479315b722f557044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   _InitialPosition: {x: 0, y: 0, z: 0}
   _InitialRotation: {x: 0, y: 0, z: 0}
 --- !u!60 &2037422186
@@ -194,3 +195,7 @@ PolygonCollider2D:
       - {x: 0.9824219, y: -0.24414062}
       - {x: 1, y: -0.2265625}
       - {x: 1, y: 0.22460938}
+=======
+  _StaticAttribute: {fileID: 1141849738734162183, guid: c69b41826dffc89408240b7eb0090b3b,
+    type: 3}
+>>>>>>> origin/block
