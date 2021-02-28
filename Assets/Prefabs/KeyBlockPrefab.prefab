@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3441663945479049901}
   - component: {fileID: 832426163817067047}
   - component: {fileID: 3639856823304092601}
-  - component: {fileID: 2367558155581121317}
+  - component: {fileID: -2801719917992000984}
   - component: {fileID: 4787857103670204143}
   m_Layer: 9
   m_Name: KeyBlockPrefab
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!60 &2367558155581121317
+--- !u!60 &-2801719917992000984
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,8 +114,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 4513698005182326937}
   m_Enabled: 1
   m_Density: 1
-
-  m_Material: {fileID: 6200000, guid: dbd4740ce0b881b4e9526f22629eb7bf, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -179,3 +178,4 @@ MonoBehaviour:
   wheelImgSize: 64
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
+  player: {fileID: 0}

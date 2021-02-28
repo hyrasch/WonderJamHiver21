@@ -27,7 +27,7 @@ public class TetrisBlock : MonoBehaviour
     private void InitAttr()
     {
         if (_spriteComponent != null) return;
-        
+
         _spriteComponent = GetComponent<SpriteRenderer>();
         _attachedEffect = TetrisBlockStaticValue.BlockEffect.Neutral;
     }
@@ -49,25 +49,26 @@ public class TetrisBlock : MonoBehaviour
         for (var i = 0; i < staticAttribute._effectProbabilty.Count; i++)
         {
             currentProb += staticAttribute._effectProbabilty[i];
-            if (rand <= currentProb) 
+            if (rand <= currentProb)
             {
                 return (TetrisBlockStaticValue.BlockEffect) i;
             }
         }
+
         return (TetrisBlockStaticValue.BlockEffect) (staticAttribute._effectProbabilty.Count - 1);
     }
 
     public void SpawnInGameWorld()
     {
         InitAttr();
-        
+
         StartCoroutine(ColorRandomizer());
     }
 
     public void InitWheel(SpriteRenderer wheel)
     {
         if (_wheel != null) return;
-        
+
         _wheel = wheel;
     }
 
@@ -81,20 +82,23 @@ public class TetrisBlock : MonoBehaviour
                 {
                     var wheelTransform = _wheel.transform;
                     var wheelPosition = wheelTransform.localPosition;
-                
+
                     if (wheelPosition.y <= -wheelBorder)
                     {
                         wheelTransform.localPosition = new Vector2(wheelPosition.x, wheelBorder);
                         wheelPosition = wheelTransform.localPosition;
                     }
-                    wheelTransform.localPosition = new Vector2(wheelPosition.x, wheelPosition.y - wheelBorder / wheelStep);
+
+                    wheelTransform.localPosition =
+                        new Vector2(wheelPosition.x, wheelPosition.y - wheelBorder / wheelStep);
                     yield return new WaitForSeconds(wheelSpeed * i);
                 }
             }
+
             _spriteComponent.color = staticAttribute._effectColor[i % staticAttribute._effectColor.Count];
             yield return new WaitForSeconds(wheelSpeed * i);
         }
-        
+
         _attachedEffect = ChooseRandomEffect();
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
 
@@ -127,7 +131,8 @@ public class TetrisBlock : MonoBehaviour
             var wheelTransform = _wheel.transform;
             var wheelPosition = wheelTransform.localPosition;
 
-            wheelTransform.localPosition = new Vector2(wheelPosition.x, wheelBorder * -1 + (int) _attachedEffect * wheelImgSize);
+            wheelTransform.localPosition =
+                new Vector2(wheelPosition.x, wheelBorder * -1 + (int) _attachedEffect * wheelImgSize);
         }
     }
 
@@ -139,10 +144,12 @@ public class TetrisBlock : MonoBehaviour
         }
 
         if (gameObject.layer != 8) return;
-        
-        switch (_attachedEffect)
+
+        if (collision.gameObject.CompareTag("Player"))
         {
-            case TetrisBlockStaticValue.BlockEffect.Neutral:
+            switch (_attachedEffect)
+            {
+                case TetrisBlockStaticValue.BlockEffect.Neutral:
 
                     break;
                 case TetrisBlockStaticValue.BlockEffect.Fire:
@@ -165,16 +172,28 @@ public class TetrisBlock : MonoBehaviour
                     Debug.Log("Bad luck!");
                     Malus();
                     break;
-            
-
-            //gameObject.GetComponent<Rigidbody2D>().isKinematic = true; A débattre
+            }
+        }
+        else
+        {
+            switch (_attachedEffect)
+            {
+                case TetrisBlockStaticValue.BlockEffect.Explosion:
+                    Debug.Log("Tic Tac");
+                    StartCoroutine(WaitForBoom(2.0f));
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Enemy:
+                    Debug.Log("Be careful");
+                    Enemy();
+                    break;
+            }
         }
     }
 
     private IEnumerator WaitForBoom(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        
+
         Boom();
     }
 
@@ -186,13 +205,20 @@ public class TetrisBlock : MonoBehaviour
         {
             var rb = hit.GetComponent<Rigidbody2D>();
             if (rb == null) continue;
-            
+
             if (rb.CompareTag("Block"))
             {
                 Destroy(rb.gameObject);
             }
+
+            if (rb.CompareTag("Player"))
+            {
+                rb.gameObject.GetComponent<Character2DController>().health -= .5f;
+            }
         }
-        
+
+        FindObjectOfType<AudioManager>().Play("Explosion");
+
         Destroy(gameObject);
     }
 
@@ -200,8 +226,10 @@ public class TetrisBlock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Character2DController>().health -= 3;
+            collision.gameObject.GetComponent<Character2DController>().health -= .1f;
         }
+
+        FindObjectOfType<AudioManager>().Play("Fire");
     }
 
     private void Ice()
@@ -211,15 +239,22 @@ public class TetrisBlock : MonoBehaviour
 
     private void Enemy()
     {
-        GameObject newEnemy = Instantiate(enemyPrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemyPrefab, new Vector3(transform.position.x, transform.position.y, 0),
+            Quaternion.identity);
         GameObject kingGo = GameObject.Find("/King");
         if (kingGo != null)
             newEnemy.gameObject.GetComponent<Ennemy>().playerTransform = kingGo.transform;
         Destroy((gameObject));
+
+        FindObjectOfType<AudioManager>().Play("Enemy");
     }
 
     private void Malus()
     {
-        
+        GameObject timerGo = GameObject.Find("/gameUICanvas/timerEtScore");
+        if (timerGo != null)
+            timerGo.GetComponent<TimerAndScore>().timeRemaining -= 10;
+
+        FindObjectOfType<AudioManager>().Play("Malus");
     }
 }

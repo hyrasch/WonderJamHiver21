@@ -33,7 +33,6 @@ public class BlockDrop : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
 
         _block = blockSelection.SelectBlock();
-        _block.transform.parent = parent;
         _block.SetActive(true);
         
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
