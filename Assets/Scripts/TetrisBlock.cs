@@ -348,7 +348,7 @@ public class TetrisBlock : MonoBehaviour
 
             if (rb.CompareTag("Player"))
             {
-                rb.gameObject.GetComponent<Character2DController>().diminishHealth(.5f);
+                rb.gameObject.GetComponent<Character2DController>().DiminishHealth(.5f);
             }
         }
 
@@ -368,7 +368,7 @@ public class TetrisBlock : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player"))
         {
-            collider.gameObject.GetComponent<Character2DController>().diminishHealth(0.005f);
+            collider.gameObject.GetComponent<Character2DController>().DiminishHealth(0.005f);
         }
 
         if (!isFireSoundPlaying)

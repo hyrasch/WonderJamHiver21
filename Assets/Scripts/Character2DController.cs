@@ -8,11 +8,11 @@ public class Character2DController : MonoBehaviour
     public float speed;            // Character's movement speed
     public float jumpForce;        // Character's jump force
     public Transform groundCheck;  // Transform of the ground checking object
-    public Transform ceilCheck;  // Transform of the ground checking object
+    public Transform ceilCheck;    // Transform of the ground checking object
     public float checkRadius;      // Radius of the ground checking object
-    public float ceilRadius;      // Radius of the ground checking object
+    public float ceilRadius;       // Radius of the ground checking object
     public LayerMask whatIsGround; // Ground layer
-    public LayerMask whatIsBlock; // Ground layer
+    public LayerMask whatIsBlock;  // Ground layer
     public int extraJumpsValue;    // Number of extra jumps
     public Vector3 respawnPoint;
     public UnityEvent onLandEvent;
@@ -29,7 +29,7 @@ public class Character2DController : MonoBehaviour
     private int score;
     private int scoreP1;
     private int scoreP2;
-    
+
     private bool _fallOnPlayer;
 
     private void Awake() {
@@ -47,14 +47,11 @@ public class Character2DController : MonoBehaviour
 
         _extraJumps = extraJumpsValue;
 
-        // Enabling runner mode
-        foreach (var ruleSet in _runner.controllers.maps.mapEnabler.ruleSets)
-            ruleSet.enabled = false;
         _runner.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Runner").enabled = true;
         _runner.controllers.maps.mapEnabler.Apply();
 
         score = 0;
-        respawnPoint = this.transform.position;
+        respawnPoint = transform.position;
     }
 
     private void FixedUpdate() {
@@ -66,9 +63,8 @@ public class Character2DController : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         _fallOnPlayer = Physics2D.OverlapCircle(ceilCheck.position, ceilRadius, whatIsBlock);
 
-        if (_fallOnPlayer)
-        {
-            diminishHealth(2f);
+        if (_fallOnPlayer) {
+            DiminishHealth(2f);
         }
 
         switch (wasGrounded) {
@@ -115,32 +111,26 @@ public class Character2DController : MonoBehaviour
         _jump = _runner.GetButtonDown("Jump");
     }
 
-    
-    public void diminishHealth(float damage)
-    {
-        health= health- damage;
-        if (health <= 0.01)
-        {
-            respawn();
-            FindObjectOfType<PostGameUIManager>().endGame();
-        }
+
+    public void DiminishHealth(float damage) {
+        health -= damage;
+        if (health > 0.01) return;
+
+        respawn();
+        FindObjectOfType<PostGameUIManager>().EndGame();
     }
 
-    public void respawn()
-    {
+    public void respawn() {
         this.gameObject.transform.position = respawnPoint;
         this.health = 1.0f;
         this.score = 0;
-
     }
 
-    public int GetScore()
-    {
+    public int GetScore() {
         return score + 4 + (int) Mathf.Round(gameObject.transform.localPosition.y);
     }
-    
-    public void AddToScore(int value) 
-    {
+
+    public void AddToScore(int value) {
         score += value;
     }
 }

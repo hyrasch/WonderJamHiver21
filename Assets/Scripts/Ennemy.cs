@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static Utils;
 
 public class Ennemy : MonoBehaviour
 {
@@ -25,82 +25,69 @@ public class Ennemy : MonoBehaviour
 
     public Animator animator;
 
-    void Start()
-    {
+    void Start() {
         rb = GetComponent<Rigidbody2D>();
         lastPos = rb.position.x;
         StartCoroutine(WaitDespawnEnemy(5f));
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         currentPos = rb.position.x;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        var playerPositionwithoutY = playerTransform.position;  //ça faisait un peu bugger l'ennemi si on utilisait directement la position du joueur
+        var playerPositionwithoutY =
+            playerTransform.position; //ça faisait un peu bugger l'ennemi si on utilisait directement la position du joueur
         playerPositionwithoutY.y = rb.position.y;
 
         transform.position = Vector2.MoveTowards(rb.position, playerPositionwithoutY, speed * Time.deltaTime);
         var movementX = currentPos - lastPos;
 
-        if (facingRight && movementX<0)
-        {
-            Flip();
-        }else if(!facingRight && movementX > 0)
-        {
-            Flip();
+        switch (facingRight) {
+            case true when movementX < 0:
+            case false when movementX > 0:
+                Flip();
+                break;
         }
 
-        animator.SetFloat("Speed", Mathf.Abs(movementX));
+        animator.SetFloat(Speed, Mathf.Abs(movementX));
 
-        if (Mathf.Abs(lastPos - currentPos) < jumpRadius && isGrounded == true)
-        {
+        if (Mathf.Abs(lastPos - currentPos) < jumpRadius && isGrounded == true) {
             rb.velocity = Vector2.up * jumpForce;
         }
 
-        if (!isGrounded && rb.velocity.y > 0)
-        {
-            animator.SetBool("IsJumping", true);
-            animator.SetBool("IsFalling", false);
-        }
-        else if (!isGrounded && rb.velocity.y < 0)
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", true);
-        }
-        else
-        {
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", false);
+        switch (isGrounded) {
+            case false when rb.velocity.y > 0:
+                animator.SetBool(IsJumping, true);
+                animator.SetBool(IsFalling, false);
+                break;
+            case false when rb.velocity.y < 0:
+                animator.SetBool(IsJumping, false);
+                animator.SetBool(IsFalling, true);
+                break;
+            default:
+                animator.SetBool(IsJumping, false);
+                animator.SetBool(IsFalling, false);
+                break;
         }
 
         lastPos = currentPos;
     }
-    private void Update()
-    {
-        
-    }
 
-    void Flip()
-    {
+    void Flip() {
         facingRight = !facingRight;
-        Vector3 Scaler = transform.localScale;
-        Scaler.x *= -1;
-        transform.localScale = Scaler;
+        Vector3 scaler = transform.localScale;
+        scaler.x *= -1;
+        transform.localScale = scaler;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            collision.gameObject.GetComponent<Character2DController>().diminishHealth(damage);
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.CompareTag("Player")) {
+            collision.gameObject.GetComponent<Character2DController>().DiminishHealth(damage);
         }
     }
-    
-    private IEnumerator WaitDespawnEnemy(float waitTime)
-    {
+
+    private IEnumerator WaitDespawnEnemy(float waitTime) {
         yield return new WaitForSeconds(waitTime);
         Destroy(gameObject);
     }
-
 }

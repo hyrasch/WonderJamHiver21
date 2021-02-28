@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class PauseController : MonoBehaviour
 {
     public GameObject pauseUI;
+    public PostGameUIManager postGameUIManager;
 
     private Player _master;
     private Player _runner;
@@ -15,41 +16,34 @@ public class PauseController : MonoBehaviour
     }
 
     private void Update() {
-        if (_master.GetButtonDown("Pause")) {
-            pauseUI.SetActive(true);
-            Time.timeScale = 0f;
-            UpdateControllerMaps("Menu", "Menu");
-            _runner.isPlaying = false;
-        }
+        if (postGameUIManager.gameIsEnded) return;
+        
+        if (!_master.GetButtonDown("Pause") && !_runner.GetButtonDown("Pause")) return;
 
-        if (_runner.GetButtonDown("Pause")) {
-            pauseUI.SetActive(true);
-            Time.timeScale = 0f;
-            UpdateControllerMaps("Menu", "Menu");
-            _master.isPlaying = false;
-        }
+        pauseUI.SetActive(true);
+        Time.timeScale = 0f;
+        _runner.isPlaying = _master.isPlaying = false;
     }
 
-    public void UpdateControllerMaps(string masterMapName, string runnerMapName) {
-        var masterMap = _master.controllers.maps.mapEnabler;
-        var runnerMap = _runner.controllers.maps.mapEnabler;
-
-        foreach (var ruleSet in masterMap.ruleSets)
-            ruleSet.enabled = false;
-
-        foreach (var ruleSet in runnerMap.ruleSets)
-            ruleSet.enabled = false;
-
-        masterMap.ruleSets.Find(rs => rs.tag == masterMapName).enabled = true;
-        runnerMap.ruleSets.Find(rs => rs.tag == runnerMapName).enabled = true;
-
-        masterMap.Apply();
-        runnerMap.Apply();
-    }
+    // public void UpdateControllerMaps(string masterMapName, string runnerMapName) {
+    //     var masterMap = _master.controllers.maps.mapEnabler;
+    //     var runnerMap = _runner.controllers.maps.mapEnabler;
+    //
+    //     foreach (var ruleSet in masterMap.ruleSets)
+    //         ruleSet.enabled = false;
+    //
+    //     foreach (var ruleSet in runnerMap.ruleSets)
+    //         ruleSet.enabled = false;
+    //
+    //     masterMap.ruleSets.Find(rs => rs.tag == masterMapName).enabled = true;
+    //     runnerMap.ruleSets.Find(rs => rs.tag == runnerMapName).enabled = true;
+    //
+    //     masterMap.Apply();
+    //     runnerMap.Apply();
+    // }
 
     public void Continue() {
         pauseUI.SetActive(false);
-        UpdateControllerMaps("Master", "Runner");
         Time.timeScale = 1f;
         _master.isPlaying = _runner.isPlaying = true;
     }

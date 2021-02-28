@@ -403,7 +403,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Game
+  m_text: Nouveau jeu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5aa03f55c8ba4548a3138a9c9afa95c, type: 2}
   m_sharedMaterial: {fileID: -2275912614878931491, guid: b5aa03f55c8ba4548a3138a9c9afa95c,
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Back\t"
+  m_text: Retour
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5aa03f55c8ba4548a3138a9c9afa95c, type: 2}
   m_sharedMaterial: {fileID: -2275912614878931491, guid: b5aa03f55c8ba4548a3138a9c9afa95c,
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5aa03f55c8ba4548a3138a9c9afa95c, type: 2}
   m_sharedMaterial: {fileID: -2275912614878931491, guid: b5aa03f55c8ba4548a3138a9c9afa95c,
