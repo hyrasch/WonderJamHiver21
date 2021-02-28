@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using TMPro;
 
@@ -11,7 +10,10 @@ public class TimerAndScore : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI scoreUI;
 
-    public int score;
+    public int scoreP1;
+    public int scoreP2;
+
+    private bool turnP1 = true;
 
     public Character2DController Runner;
     
@@ -46,14 +48,28 @@ public class TimerAndScore : MonoBehaviour
 
     public void setScore(int value)
     {
-        score = value;
-        scoreUI.SetText(value.ToString());
+        if (turnP1)
+        {
+            scoreP1 = Mathf.Max(scoreP1, value - 1);
+        }
+        else
+        {
+            scoreP2 = Mathf.Max(scoreP2, value - 1);
+        }
+        scoreUI.SetText(turnP1 ? scoreP1.ToString() : scoreP2.ToString());
     }
 
     public void addToScore(int value)
     {
-        score += value;
-        setScore(score);
+        if (turnP1)
+        {
+            scoreP1 += value;
+        }
+        else
+        {
+            scoreP2 += value;
+        }
+        setScore(turnP1 ? scoreP1 : scoreP2);
     }
 
     void setTimer(float timeToDisplay)

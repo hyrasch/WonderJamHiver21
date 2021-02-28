@@ -127,7 +127,7 @@ public class Character2DController : MonoBehaviour
 
     public int GetScore()
     {
-        return score + 4 + (int)Mathf.Round(gameObject.transform.localPosition.y);
+        return score + 4 + (int) Mathf.Round(gameObject.transform.localPosition.y);
     }
     
     public void AddToScore(int value) 
