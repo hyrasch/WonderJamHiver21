@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BlockDrop : MonoBehaviour
 {
@@ -20,12 +22,12 @@ public class BlockDrop : MonoBehaviour
         GetNextBlock();
         
         if (_block == null) return;
-        
+
         MoveBlock();
         RotateBlock();
         DropBlock();
     }
-    
+
     private void GetNextBlock()
     {
         if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
@@ -49,6 +51,7 @@ public class BlockDrop : MonoBehaviour
         {
             blockTransform.position += new Vector3(5f, 0f, 0f) * Time.deltaTime;
         }
+        blockTransform.position = new Vector2(blockTransform.position.x, parent.position.y);
     }
 
     private void RotateBlock()
