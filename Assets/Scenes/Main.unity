@@ -4942,7 +4942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850941643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.020001, y: -1.3999993, z: -10}
+  m_LocalPosition: {x: 2.02, y: -1.3999993, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 951352022}
@@ -5356,6 +5356,7 @@ MonoBehaviour:
   partyTimer: 300
   scoreP1: 0
   scoreP2: 0
+  turnP1: 0
   Runner: {fileID: 48354619}
   timeRemaining: 300
 --- !u!114 &944633933
@@ -8224,7 +8225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450181591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.020001, y: -1.3999993, z: -10}
+  m_LocalPosition: {x: 2.02, y: -1.3999993, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1729091675}
@@ -9496,7 +9497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1741575628
 Transform:
   m_ObjectHideFlags: 0
