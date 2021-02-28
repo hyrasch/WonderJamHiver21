@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class StopForce : MonoBehaviour
 {
@@ -40,9 +41,25 @@ public class StopForce : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!other.collider.CompareTag(tag))
+        {
+            _isColliding = true;
+        }
+    }
+
     private void OnCollisionExit(Collision collision)
     {
         if (!collision.collider.CompareTag(tag))
+        {
+            _isColliding = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (!other.collider.CompareTag(tag))
         {
             _isColliding = false;
         }

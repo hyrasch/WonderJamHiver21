@@ -13,8 +13,6 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private Character2DController player;
     [SerializeField] private BlocSelection blockSelection;
 
-    [SerializeField] private Character2DController temp;
-
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
     private bool _canSelect = true;
@@ -35,7 +33,6 @@ public class BlockDrop : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
 
         _block = blockSelection.SelectBlock();
-        _block.transform.parent = parent;
         _block.SetActive(true);
         
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
