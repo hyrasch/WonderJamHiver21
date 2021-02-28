@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/CharacterDeath.unity
     guid: f6370eaf516f59440999e3fcf8c3b9d4
   - enabled: 0
-    path: Assets/Scenes/GameOverScreen.unity
+    path: 
     guid: e9563697865cbeb42804374bcce3ffc7
+  - enabled: 1
+    path: Assets/Scenes/ScoreBoard.unity
+    guid: 52bb139f834467b4a9a09d1d9bfd4bec
   m_configObjects: {}

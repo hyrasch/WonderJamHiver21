@@ -26,6 +26,7 @@ public class Score
     public void LoadScore()
     {
         Scores = SaveSystem.LoadScore().Scores;
+        SortScore();
     }
 
     private void SortScore()

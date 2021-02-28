@@ -29,7 +29,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void Scores() {
-        Debug.Log("Scores");
+        SceneManager.LoadScene("ScoreBoard");
     }
 
     public void Quit() {
