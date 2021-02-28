@@ -26,9 +26,6 @@ public class GameOverScreen : MonoBehaviour
 
     public void continueButton()
     {
-        //this.gameObject.SetActive(false);
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //Passer aux écrans de noms
         gameObject.SetActive(false);
         namingScreen.setup(scorePlayer1, scorePlayer2);
     }
