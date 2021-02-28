@@ -15,6 +15,15 @@ public class TetrisBlock : MonoBehaviour
     [SerializeField] private int wheelStep = 4;
     [SerializeField] private int wheelImgSize = 64;
 
+    [SerializeField] GameObject _fireParticle;
+    [SerializeField] GameObject _explosionParticle;
+    [SerializeField] GameObject _malusParticle;
+    [SerializeField] int _indexIceSprite;
+    [SerializeField] GameObject _dustParticle;
+
+    SpriteRenderer _renderer;
+    Sprite _defaultSprite;
+    GameObject _systemAttached;
     private TetrisBlockStaticValue.BlockEffect _attachedEffect;
     private SpriteRenderer _spriteComponent;
     private Image _wheel;
@@ -31,7 +40,8 @@ public class TetrisBlock : MonoBehaviour
     private void Start()
     {
         InitAttr();
-
+        _renderer = GetComponent<SpriteRenderer>();
+        _defaultSprite = _renderer.sprite;
         isFireSoundPlaying = false;
     }
 
@@ -163,19 +173,19 @@ public class TetrisBlock : MonoBehaviour
 
                 break;
             case TetrisBlockStaticValue.BlockEffect.Fire:
-                transform.Find("Fire").gameObject.SetActive(true);
+                _fireParticle.SetActive(true);
                 break;
             case TetrisBlockStaticValue.BlockEffect.Ice:
-
+                _renderer.sprite = staticAttribute._iceSprites[_indexIceSprite]; 
                 break;
             case TetrisBlockStaticValue.BlockEffect.Explosion:
-                transform.Find("Explosion").gameObject.SetActive(true);
+                _systemAttached = _explosionParticle;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Enemy:
 
                 break;
             case TetrisBlockStaticValue.BlockEffect.Malus:
-
+                _systemAttached = _malusParticle;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(blockEffect), blockEffect, null);
@@ -184,6 +194,7 @@ public class TetrisBlock : MonoBehaviour
 
     private void DisableParticles()
     {
+        _renderer.sprite = _defaultSprite;
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(false);
@@ -209,6 +220,9 @@ public class TetrisBlock : MonoBehaviour
         if (collision.gameObject.layer == 8 && gameObject.layer != 8)
         {
             gameObject.layer = 8;
+           /* GameObject dust = Instantiate(_dustParticle.gameObject,transform);
+            dust.GetComponent<ParticleSystem>().Play();
+            StartCoroutine(DestroyParticle(dust, 1.5f));*/
         }
 
         if (gameObject.layer != 8) return;
@@ -266,6 +280,14 @@ public class TetrisBlock : MonoBehaviour
     {
         var colliders = Physics2D.OverlapCircleAll(transform.position, 2);
 
+        GameObject gameObjectParticle = Instantiate(_systemAttached,_systemAttached.transform.position,_systemAttached.transform.rotation, null);
+        ParticleSystem particles = gameObjectParticle.GetComponent<ParticleSystem>();
+        gameObjectParticle.SetActive(true);
+        ParticleSystem.ShapeModule shape = particles.shape;
+        shape.scale *= 2;
+        particles.Play();
+        StartCoroutine(DestroyParticle(gameObjectParticle,1.5f));
+
         foreach (var hit in colliders)
         {
             var rb = hit.GetComponent<Rigidbody2D>();
@@ -285,6 +307,13 @@ public class TetrisBlock : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Explosion");
 
         Destroy(gameObject);
+    }
+
+    IEnumerator DestroyParticle(GameObject particle, float time)
+    {
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(time);
+        Destroy(particle);
     }
 
     private void Fire(Collider2D collider)
@@ -328,6 +357,11 @@ public class TetrisBlock : MonoBehaviour
 
     private void Malus()
     {
+        Debug.Log("Malus");
+        ParticleSystem particles = _systemAttached.GetComponent<ParticleSystem>();
+        _systemAttached.SetActive(true);
+        particles.Play();
+
         GameObject timerGo = GameObject.Find("/gameUICanvas/timerEtScore");
         if (timerGo != null)
             timerGo.GetComponent<TimerAndScore>().timeRemaining -= 10;

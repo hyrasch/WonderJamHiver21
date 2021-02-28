@@ -128,9 +128,14 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 8228895713328048225}
+  _explosionParticle: {fileID: 5681661453734072884}
+  _malusParticle: {fileID: 2207867622634126189}
+  _indexIceSprite: 3
+  _dustParticle: {fileID: 7274574535512483235, guid: 68adc3e58388f5b4f96cd0be24febc90,
+    type: 3}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
-  player: {fileID: 0}
 --- !u!60 &5245024535656251952
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -272,8 +277,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 8952688669033732593, guid: 8a9e3022b2499be44958a6ae60015a59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a9e3022b2499be44958a6ae60015a59, type: 3}
+--- !u!1 &8228895713328048225 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8952688669033732593, guid: 8a9e3022b2499be44958a6ae60015a59,
+    type: 3}
+  m_PrefabInstance: {fileID: 1012395003312124304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8228895713328048224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8952688669033732592, guid: 8a9e3022b2499be44958a6ae60015a59,
@@ -290,7 +306,7 @@ PrefabInstance:
     - target: {fileID: 549244231624244658, guid: 0b210e073860ac7489a493c41fefb463,
         type: 3}
       propertyPath: m_Name
-      value: LongBlockMalusParticle
+      value: Malus
       objectReference: {fileID: 0}
     - target: {fileID: 831759176060859169, guid: 0b210e073860ac7489a493c41fefb463,
         type: 3}
@@ -347,8 +363,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7005384382584040524, guid: 0b210e073860ac7489a493c41fefb463,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005384382584040524, guid: 0b210e073860ac7489a493c41fefb463,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.24313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005384382584040524, guid: 0b210e073860ac7489a493c41fefb463,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7005384382584040524, guid: 0b210e073860ac7489a493c41fefb463,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.18431373
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b210e073860ac7489a493c41fefb463, type: 3}
+--- !u!1 &2207867622634126189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 549244231624244658, guid: 0b210e073860ac7489a493c41fefb463,
+    type: 3}
+  m_PrefabInstance: {fileID: 1818510114023556831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1348728857558201854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 831759176060859169, guid: 0b210e073860ac7489a493c41fefb463,
@@ -417,6 +459,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3964840408448796400, guid: 7033087d4ed01014abb8f0ae5b5c8efb,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964840408448796400, guid: 7033087d4ed01014abb8f0ae5b5c8efb,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 7336927769301944311, guid: 7033087d4ed01014abb8f0ae5b5c8efb,
         type: 3}
       propertyPath: m_Name
@@ -424,6 +476,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7033087d4ed01014abb8f0ae5b5c8efb, type: 3}
+--- !u!1 &5681661453734072884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7336927769301944311, guid: 7033087d4ed01014abb8f0ae5b5c8efb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3101660814066079171}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &473645789332965713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3285914990630231186, guid: 7033087d4ed01014abb8f0ae5b5c8efb,

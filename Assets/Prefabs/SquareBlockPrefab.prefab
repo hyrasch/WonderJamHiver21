@@ -128,9 +128,14 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 7731122805227368954}
+  _explosionParticle: {fileID: 7122159386101474743}
+  _malusParticle: {fileID: 4780954764716315518}
+  _indexIceSprite: 4
+  _dustParticle: {fileID: 7274574535512483235, guid: 68adc3e58388f5b4f96cd0be24febc90,
+    type: 3}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
-  player: {fileID: 0}
 --- !u!60 &7206595568271128726
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -213,6 +218,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 5391104303655252403, guid: a28bbe65a8a8aef47911c0c4ac1549b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5391104303655252404, guid: a28bbe65a8a8aef47911c0c4ac1549b1,
         type: 3}
       propertyPath: m_RootOrder
@@ -270,6 +280,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a28bbe65a8a8aef47911c0c4ac1549b1, type: 3}
+--- !u!1 &7731122805227368954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5391104303655252403, guid: a28bbe65a8a8aef47911c0c4ac1549b1,
+    type: 3}
+  m_PrefabInstance: {fileID: 2421665529422725193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7731122805227368957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5391104303655252404, guid: a28bbe65a8a8aef47911c0c4ac1549b1,
@@ -283,10 +299,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8691737955932464634}
     m_Modifications:
+    - target: {fileID: 1516083239299693966, guid: 7f9f56336889b894bbc224067b41b8aa,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516083239299693966, guid: 7f9f56336889b894bbc224067b41b8aa,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.24313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516083239299693966, guid: 7f9f56336889b894bbc224067b41b8aa,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516083239299693966, guid: 7f9f56336889b894bbc224067b41b8aa,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.18431373
+      objectReference: {fileID: 0}
     - target: {fileID: 8335429404448074864, guid: 7f9f56336889b894bbc224067b41b8aa,
         type: 3}
       propertyPath: m_Name
-      value: SquareBlockMalusParticle
+      value: Malus
       objectReference: {fileID: 0}
     - target: {fileID: 9203434347516617443, guid: 7f9f56336889b894bbc224067b41b8aa,
         type: 3}
@@ -345,6 +381,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9f56336889b894bbc224067b41b8aa, type: 3}
+--- !u!1 &4780954764716315518 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8335429404448074864, guid: 7f9f56336889b894bbc224067b41b8aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 3599565664200277774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5642186938690756077 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9203434347516617443, guid: 7f9f56336889b894bbc224067b41b8aa,
@@ -418,8 +460,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8199501589524653060, guid: facf9d321c0e255499fdbff745359139,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8199501589524653060, guid: facf9d321c0e255499fdbff745359139,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: facf9d321c0e255499fdbff745359139, type: 3}
+--- !u!1 &7122159386101474743 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1004623652083734259, guid: facf9d321c0e255499fdbff745359139,
+    type: 3}
+  m_PrefabInstance: {fileID: 8009614388948562756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6468294526388818808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3955324032976461884, guid: facf9d321c0e255499fdbff745359139,

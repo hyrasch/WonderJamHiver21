@@ -128,9 +128,14 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 2921387842984845482}
+  _explosionParticle: {fileID: 4179665603766210708}
+  _malusParticle: {fileID: 8916772446015259969}
+  _indexIceSprite: 5
+  _dustParticle: {fileID: 7274574535512483235, guid: 68adc3e58388f5b4f96cd0be24febc90,
+    type: 3}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
-  player: {fileID: 0}
 --- !u!60 &4049937639308056668
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -247,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 2224466088648350568, guid: 07f29438126373b419a8c543cbe7d9e5,
         type: 3}
       propertyPath: m_Name
-      value: StairBlockMalusParticle
+      value: Malus
       objectReference: {fileID: 0}
     - target: {fileID: 4644574200146989612, guid: 07f29438126373b419a8c543cbe7d9e5,
         type: 3}
@@ -304,8 +309,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7864235724508869806, guid: 07f29438126373b419a8c543cbe7d9e5,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864235724508869806, guid: 07f29438126373b419a8c543cbe7d9e5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.24313726
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864235724508869806, guid: 07f29438126373b419a8c543cbe7d9e5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.4509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7864235724508869806, guid: 07f29438126373b419a8c543cbe7d9e5,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.18431373
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07f29438126373b419a8c543cbe7d9e5, type: 3}
+--- !u!1 &8916772446015259969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2224466088648350568, guid: 07f29438126373b419a8c543cbe7d9e5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7304936816655900201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2671917659100417029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4644574200146989612, guid: 07f29438126373b419a8c543cbe7d9e5,
@@ -323,6 +354,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172320755258539255, guid: f6df212a25e42c646a0c88cb88a6a8c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5172320755258539256, guid: f6df212a25e42c646a0c88cb88a6a8c2,
         type: 3}
@@ -381,6 +417,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6df212a25e42c646a0c88cb88a6a8c2, type: 3}
+--- !u!1 &2921387842984845482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5172320755258539255, guid: f6df212a25e42c646a0c88cb88a6a8c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8020097922556304477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2921387842984845477 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5172320755258539256, guid: f6df212a25e42c646a0c88cb88a6a8c2,
@@ -394,6 +436,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7774709642219740956}
     m_Modifications:
+    - target: {fileID: 4723294046479572260, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572260, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572260, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
         type: 3}
       propertyPath: m_RootOrder
@@ -456,6 +513,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 027212e8ff7ccd14b90a2b374a00d7e1, type: 3}
+--- !u!1 &4179665603766210708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4723294046479572283, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8902953809085894063}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4179665603766210709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
