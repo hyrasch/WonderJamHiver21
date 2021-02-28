@@ -200,8 +200,8 @@ Transform:
   m_LocalPosition: {x: 3.374, y: 9.215, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &12832646
 BoxCollider2D:
@@ -650,8 +650,8 @@ Transform:
   m_LocalPosition: {x: 3.374, y: 15.104, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &70868067
 BoxCollider2D:
@@ -909,8 +909,20 @@ Transform:
   - {fileID: 1483361102}
   - {fileID: 1743820804}
   - {fileID: 1115632863}
+  - {fileID: 1420413474}
+  - {fileID: 703232839}
+  - {fileID: 12832645}
+  - {fileID: 552264500}
+  - {fileID: 1057684307}
+  - {fileID: 1437921050}
+  - {fileID: 1068150056}
+  - {fileID: 857439148}
+  - {fileID: 70868066}
+  - {fileID: 1588871494}
+  - {fileID: 862250867}
+  - {fileID: 389381948}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123190812
 GameObject:
@@ -1504,7 +1516,7 @@ PrefabInstance:
     - target: {fileID: 4745465040646187730, guid: b44de6f007aaf0248afa7fec18d6d138,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4745465040646187730, guid: b44de6f007aaf0248afa7fec18d6d138,
         type: 3}
@@ -1826,8 +1838,8 @@ Transform:
   m_LocalPosition: {x: 3.374, y: 5.29, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &389381949
 BoxCollider2D:
@@ -2148,7 +2160,7 @@ Transform:
   - {fileID: 1915581868}
   - {fileID: 1005309575}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &520811259
 GameObject:
@@ -2491,8 +2503,8 @@ Transform:
   m_LocalPosition: {x: -3.374, y: 9.215, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &552264501
 BoxCollider2D:
@@ -2930,6 +2942,7 @@ MonoBehaviour:
   player: {fileID: 48354619}
   blockSelection: {fileID: 685783092}
   textEffect: {fileID: 573829947}
+  turnP1: 1
 --- !u!4 &656252792
 Transform:
   m_ObjectHideFlags: 0
@@ -2942,7 +2955,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &656252793
 MonoBehaviour:
@@ -3250,8 +3263,8 @@ Transform:
   m_LocalPosition: {x: -3.374, y: 7.25, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &703232840
 BoxCollider2D:
@@ -3984,8 +3997,8 @@ Transform:
   m_LocalPosition: {x: -3.374, y: 13.139, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &857439149
 BoxCollider2D:
@@ -4092,8 +4105,8 @@ Transform:
   m_LocalPosition: {x: -3.374, y: 5.29, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &862250868
 BoxCollider2D:
@@ -4832,8 +4845,8 @@ Transform:
   m_LocalPosition: {x: 3.374, y: 11.179, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1057684308
 BoxCollider2D:
@@ -4940,8 +4953,8 @@ Transform:
   m_LocalPosition: {x: 3.374, y: 13.139, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1068150057
 BoxCollider2D:
@@ -5846,7 +5859,7 @@ RectTransform:
   - {fileID: 944633931}
   - {fileID: 1992639767}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6336,8 +6349,8 @@ Transform:
   m_LocalPosition: {x: 3.374, y: 7.25, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1420413475
 BoxCollider2D:
@@ -6444,8 +6457,8 @@ Transform:
   m_LocalPosition: {x: -3.374, y: 11.179, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1437921051
 BoxCollider2D:
@@ -7087,8 +7100,8 @@ Transform:
   m_LocalPosition: {x: -3.374, y: 15.104, z: 0}
   m_LocalScale: {x: 0.82, y: 0.82, z: 0.82}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_Father: {fileID: 112870051}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1588871495
 BoxCollider2D:
@@ -7287,7 +7300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677458325
 GameObject:
@@ -7741,7 +7754,7 @@ Transform:
   - {fileID: 1186928850}
   - {fileID: 2077260414}
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1743820803
 GameObject:

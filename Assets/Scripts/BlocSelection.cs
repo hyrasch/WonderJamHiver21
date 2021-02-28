@@ -37,6 +37,8 @@ public class BlocSelection : MonoBehaviour
             Vector3 eulerRandomRotation = UnityEngine.Random.Range(0, 3) * new Vector3(0, 0, 90);
             Vector2 position = - _distanceBetweenBlocks*i;
             _spawnedBlocks.Add(AddBlock(UnityEngine.Random.Range(0, _blockTemplate.Count), position, Quaternion.Euler(eulerRandomRotation)));
+
+            UpdateSpawnedBlocksAlpha();
         }
     }
 
@@ -48,6 +50,16 @@ public class BlocSelection : MonoBehaviour
             GameObject newBlock = SelectBlock();
             Destroy(newBlock);
             //AddBlock(UnityEngine.Random.Range(0,6));
+        }
+    }
+
+    private void UpdateSpawnedBlocksAlpha()
+    {
+        for (var i = 0; i < _spawnedBlocks.Count; i++)
+        {
+            var tempColor = _spawnedBlocks[i].Key.GetComponent<Image>().color;
+            tempColor.a = 1f - i * .25f;
+            _spawnedBlocks[i].Key.GetComponent<Image>().color = tempColor;
         }
     }
 
@@ -76,6 +88,7 @@ public class BlocSelection : MonoBehaviour
             _spawnedBlocks.Add(AddBlock(UnityEngine.Random.Range(0, _blockTemplate.Count), spawnPos, Quaternion.Euler(eulerRandomRotation)));
             MoveUp();
         }
+        UpdateSpawnedBlocksAlpha();
         return selected;
     }
 
