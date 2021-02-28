@@ -7377,31 +7377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0938a04340e3c8b469b90a3a59a995a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds:
-  - name: Explosion
-    clip: {fileID: 8300000, guid: 4529d1280e6f67443a1f93efc84c5ad6, type: 3}
-    volume: 0.306
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Fire
-    clip: {fileID: 8300000, guid: 03af992017aab6742bebbdc073a48a68, type: 3}
-    volume: 0.306
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Enemy
-    clip: {fileID: 8300000, guid: 312fad3213973a44baa5cb92b1cc132f, type: 3}
-    volume: 0.306
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Malus
-    clip: {fileID: 8300000, guid: 897f886e014ad1943b51530c3ed163e8, type: 3}
-    volume: 0.306
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
 --- !u!4 &1667905710
 Transform:
   m_ObjectHideFlags: 0
@@ -9855,7 +9830,7 @@ GameObject:
   - component: {fileID: 2078695871}
   - component: {fileID: 2078695872}
   m_Layer: 0
-  m_Name: PostGameUI
+  m_Name: PostGameUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9888,6 +9863,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 568007553}
+  CanvasUI: {fileID: 1344391555}
+  gameUICanvas: {fileID: 1252533343}
 --- !u!1 &2101876780
 GameObject:
   m_ObjectHideFlags: 0

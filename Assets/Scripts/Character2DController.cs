@@ -121,7 +121,7 @@ public class Character2DController : MonoBehaviour
         Debug.Log(health);
         if (health <= 0.01)
         {
-            FindObjectOfType<GameManager>().endGame();
+            FindObjectOfType<PostGameUIManager>().endGame();
         }
     }
 

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class PostGameUIManager : MonoBehaviour
 {
     bool gameIsEnded = false;
     public GameOverScreen gameOverScreen;
+    public Canvas CanvasUI;
+    public Canvas gameUICanvas;
 
     public void endGame()
     {
@@ -14,14 +16,9 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameIsEnded = true;
-            gameOverScreen.setup(0,1);
-            //restart();
+            gameOverScreen.setup(0, 1);
+            CanvasUI.gameObject.SetActive(false);
+            gameUICanvas.gameObject.SetActive(false);
         }
-    }
-
-    public void restart()
-    {
-        gameIsEnded = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

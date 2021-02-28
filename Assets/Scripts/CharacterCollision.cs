@@ -25,7 +25,7 @@ public class CharacterCollision : MonoBehaviour
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb && rb.velocity.y < 0)
             {
-                FindObjectOfType<GameManager>().endGame();
+                FindObjectOfType<PostGameUIManager>().endGame();
             }
         }
     }
