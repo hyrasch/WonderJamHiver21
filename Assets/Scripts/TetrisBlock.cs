@@ -22,11 +22,18 @@ public class TetrisBlock : MonoBehaviour
     public GameObject enemyPrefab;
     public Character2DController player;
 
-    private readonly List<string> _textEffects = new List<string> { "Aucun effet...", "Il fait chaud !", "Sol glissant !", "Bim Bam Boum !", "Soldat obscure.", "Pas de chance..." };
+    private readonly List<string> _textEffects = new List<string>
+    {
+        "Aucun effet...", "Il fait chaud !", "Sol glissant !", "Bim Bam Boum !", "Soldat obscure.", "Pas de chance..."
+    };
+
+    private bool isFireSoundPlaying;
 
     private void Start()
     {
         InitAttr();
+
+        isFireSoundPlaying = false;
     }
 
     private void InitAttr()
@@ -119,19 +126,19 @@ public class TetrisBlock : MonoBehaviour
                 tmpScore++;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Enemy:
-                tmpScore+=10;
+                tmpScore += 10;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Explosion:
-                tmpScore+=10;
+                tmpScore += 10;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Fire:
-                tmpScore+=5;
+                tmpScore += 5;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Ice:
-                tmpScore+=6;
+                tmpScore += 6;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Malus:
-                tmpScore+=8;
+                tmpScore += 8;
                 break;
         }
         //player.AddToScore(tmpScore);
@@ -154,22 +161,22 @@ public class TetrisBlock : MonoBehaviour
         switch (blockEffect)
         {
             case TetrisBlockStaticValue.BlockEffect.Neutral:
-                
+
                 break;
             case TetrisBlockStaticValue.BlockEffect.Fire:
                 transform.Find("Fire").gameObject.SetActive(true);
                 break;
             case TetrisBlockStaticValue.BlockEffect.Ice:
-                
+
                 break;
             case TetrisBlockStaticValue.BlockEffect.Explosion:
                 transform.Find("Explosion").gameObject.SetActive(true);
                 break;
             case TetrisBlockStaticValue.BlockEffect.Enemy:
-                
+
                 break;
             case TetrisBlockStaticValue.BlockEffect.Malus:
-                
+
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(blockEffect), blockEffect, null);
@@ -181,6 +188,20 @@ public class TetrisBlock : MonoBehaviour
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            switch (_attachedEffect)
+            {
+                case TetrisBlockStaticValue.BlockEffect.Fire:
+                    Debug.Log("ça brule");
+                    Fire(collider);
+                    break;
+            }
         }
     }
 
@@ -200,10 +221,6 @@ public class TetrisBlock : MonoBehaviour
                 case TetrisBlockStaticValue.BlockEffect.Neutral:
 
                     break;
-                case TetrisBlockStaticValue.BlockEffect.Fire:
-                    Debug.Log("ça brule");
-                    Fire(collision);
-                    break;
                 case TetrisBlockStaticValue.BlockEffect.Ice:
                     Debug.Log("Glagla");
                     Ice();
@@ -222,7 +239,8 @@ public class TetrisBlock : MonoBehaviour
                     break;
             }
         }
-        else
+
+        if (gameObject.layer == 8)
         {
             switch (_attachedEffect)
             {
@@ -244,20 +262,6 @@ public class TetrisBlock : MonoBehaviour
 
         Boom();
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-            if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
-            {
-                collision.gameObject.GetComponent<Character2DController>().diminishHealth(2f);
-            }
-        }
-    }
-
-
 
     private void Boom()
     {
@@ -284,19 +288,31 @@ public class TetrisBlock : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private static void Fire(Collision2D collision)
+    private void Fire(Collider2D collider)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collider.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Character2DController>().diminishHealth(0.3f);
+            collider.gameObject.GetComponent<Character2DController>().diminishHealth(0.005f);
         }
 
-        FindObjectOfType<AudioManager>().Play("Fire");
+        if (!isFireSoundPlaying)
+        {
+            isFireSoundPlaying = true;
+            FindObjectOfType<AudioManager>().Play("Fire");
+
+            StartCoroutine(WaitForFireSoundEnd());
+        }
+    }
+
+    private IEnumerator WaitForFireSoundEnd()
+    {
+        yield return new WaitForSeconds(0.340f);
+        isFireSoundPlaying = false;
     }
 
     private void Ice()
     {
-        gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 0;
+        //gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 0;
     }
 
     private void Enemy()
@@ -309,6 +325,13 @@ public class TetrisBlock : MonoBehaviour
         Destroy((gameObject));
 
         FindObjectOfType<AudioManager>().Play("Enemy");
+        StartCoroutine(WaitDespawnEnemy(5f, newEnemy));
+    }
+
+    private IEnumerator WaitDespawnEnemy(float waitTime, GameObject _gameObject)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(_gameObject);
     }
 
     private void Malus()

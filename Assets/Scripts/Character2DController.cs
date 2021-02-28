@@ -8,8 +8,11 @@ public class Character2DController : MonoBehaviour
     public float speed;            // Character's movement speed
     public float jumpForce;        // Character's jump force
     public Transform groundCheck;  // Transform of the ground checking object
+    public Transform ceilCheck;  // Transform of the ground checking object
     public float checkRadius;      // Radius of the ground checking object
+    public float ceilRadius;      // Radius of the ground checking object
     public LayerMask whatIsGround; // Ground layer
+    public LayerMask whatIsBlock; // Ground layer
     public int extraJumpsValue;    // Number of extra jumps
     public Vector3 respawnPoint;
     public UnityEvent onLandEvent;
@@ -24,6 +27,8 @@ public class Character2DController : MonoBehaviour
     private bool _jump;
 
     private int score;
+    
+    private bool _fallOnPlayer;
 
     private void Awake() {
         // Getting components
@@ -57,6 +62,13 @@ public class Character2DController : MonoBehaviour
 
         // Updating character's status compared to his collision to ground
         _isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        _fallOnPlayer = Physics2D.OverlapCircle(ceilCheck.position, ceilRadius, whatIsBlock);
+
+        if (_fallOnPlayer)
+        {
+            Debug.Log("Ouch");
+            diminishHealth(2f);
+        }
 
         switch (wasGrounded) {
             case false when _isGrounded: // If the character is landing
@@ -102,20 +114,7 @@ public class Character2DController : MonoBehaviour
         _jump = _runner.GetButtonDown("Jump");
     }
 
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Block")
-        {
-            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
-            if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
-            {
-                diminishHealth(1f); //Dégats des blocs
-            }
-        }
-    }
-
+    
     public void diminishHealth(float damage)
     {
         health= health- damage;

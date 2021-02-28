@@ -7,7 +7,7 @@ public class PostGameUIManager : MonoBehaviour
 {
     bool gameIsEnded = false;
     public GameOverScreen gameOverScreen;
-    public Canvas CanvasUI;
+    //public Canvas CanvasUI;
     public Canvas gameUICanvas;
     public void endGame()
     {
@@ -18,7 +18,7 @@ public class PostGameUIManager : MonoBehaviour
             Debug.Log("Game Over");
             gameIsEnded = true;
             
-            CanvasUI.gameObject.SetActive(false);
+            //CanvasUI.gameObject.SetActive(false);
             gameUICanvas.gameObject.SetActive(false);
             gameOverScreen.setup(ts.scoreP1, ts.scoreP2);
 
