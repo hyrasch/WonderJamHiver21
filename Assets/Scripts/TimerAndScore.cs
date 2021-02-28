@@ -82,4 +82,9 @@ public class TimerAndScore : MonoBehaviour
         timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
+    public void setTurn2()
+    {
+        turnP1 = !turnP1;
+    }
+
 }
