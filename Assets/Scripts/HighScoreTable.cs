@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HighScoreTable : MonoBehaviour
@@ -94,5 +95,11 @@ public class HighScoreTable : MonoBehaviour
         }
         
         transformList.Add(entryTransform.transform);
+    }
+    
+    public void MainMenu() 
+    {
+        // TODO : Press X from controller
+        SceneManager.LoadScene("Menu");
     }
 }
