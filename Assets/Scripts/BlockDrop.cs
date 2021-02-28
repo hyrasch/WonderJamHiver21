@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -13,11 +14,16 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private Image wheel;
     [SerializeField] private Character2DController player;
     [SerializeField] private BlocSelection blockSelection;
+    [SerializeField] private TextMeshProUGUI textEffect;
 
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
     private bool _canSelect = true;
-    
+    public bool turnP1 =true;
+    public void setTurnP2()
+    {
+        turnP1 = false;
+    }
     private void Update()
     {
         GetNextBlock();
@@ -38,7 +44,7 @@ public class BlockDrop : MonoBehaviour
         
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
         _tetrisBlock.player = player;
-        _tetrisBlock.InitWheel(wheel);
+        _tetrisBlock.InitWheel(wheel, textEffect);
         _tetrisBlock.SpawnInGameWorld();
         _canSelect = false;
     }
@@ -79,12 +85,6 @@ public class BlockDrop : MonoBehaviour
         _block = null;
 
         StartCoroutine(UpdateDropTimer());
-    }
-
-    private GameObject RandomBlock()
-    {
-        var index = Random.Range(0, blocks.Count);
-        return blocks[index];
     }
 
     private IEnumerator UpdateDropTimer()

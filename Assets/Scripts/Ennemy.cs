@@ -29,6 +29,7 @@ public class Ennemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lastPos = rb.position.x;
+        StartCoroutine(WaitDespawnEnemy(5f));
     }
 
     private void FixedUpdate()
@@ -94,6 +95,12 @@ public class Ennemy : MonoBehaviour
         {
             collision.gameObject.GetComponent<Character2DController>().diminishHealth(damage);
         }
+    }
+    
+    private IEnumerator WaitDespawnEnemy(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        Destroy(gameObject);
     }
 
 }

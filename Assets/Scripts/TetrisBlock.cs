@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -16,12 +18,22 @@ public class TetrisBlock : MonoBehaviour
     private TetrisBlockStaticValue.BlockEffect _attachedEffect;
     private SpriteRenderer _spriteComponent;
     private Image _wheel;
+    private TextMeshProUGUI _textUnderWheel;
     public GameObject enemyPrefab;
     public Character2DController player;
+
+    private readonly List<string> _textEffects = new List<string>
+    {
+        "Aucun effet...", "Il fait chaud !", "Sol glissant !", "Bim Bam Boum !", "Soldat obscure.", "Pas de chance..."
+    };
+
+    private bool isFireSoundPlaying;
 
     private void Start()
     {
         InitAttr();
+
+        isFireSoundPlaying = false;
     }
 
     private void InitAttr()
@@ -65,11 +77,12 @@ public class TetrisBlock : MonoBehaviour
         StartCoroutine(ColorRandomizer());
     }
 
-    public void InitWheel(Image wheel)
+    public void InitWheel(Image wheel, TextMeshProUGUI text)
     {
         if (_wheel != null) return;
 
         _wheel = wheel;
+        _textUnderWheel = text;
     }
 
     private IEnumerator ColorRandomizer()
@@ -95,11 +108,15 @@ public class TetrisBlock : MonoBehaviour
                 }
             }
 
+            UpdateParticles((TetrisBlockStaticValue.BlockEffect) (i % staticAttribute._effectColor.Count));
+            _textUnderWheel.text = _textEffects[i % staticAttribute._effectColor.Count];
             _spriteComponent.color = staticAttribute._effectColor[i % staticAttribute._effectColor.Count];
             yield return new WaitForSeconds(wheelSpeed * i);
         }
 
         _attachedEffect = ChooseRandomEffect();
+        UpdateParticles(_attachedEffect);
+        _textUnderWheel.text = _textEffects[(int) _attachedEffect];
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
 
         int tmpScore = 0;
@@ -109,19 +126,19 @@ public class TetrisBlock : MonoBehaviour
                 tmpScore++;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Enemy:
-                tmpScore+=10;
+                tmpScore += 10;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Explosion:
-                tmpScore+=10;
+                tmpScore += 10;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Fire:
-                tmpScore+=5;
+                tmpScore += 5;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Ice:
-                tmpScore+=6;
+                tmpScore += 6;
                 break;
             case TetrisBlockStaticValue.BlockEffect.Malus:
-                tmpScore+=8;
+                tmpScore += 8;
                 break;
         }
         //player.AddToScore(tmpScore);
@@ -133,6 +150,58 @@ public class TetrisBlock : MonoBehaviour
 
             wheelTransform.localPosition =
                 new Vector2(wheelPosition.x, wheelBorder * -1 + (int) _attachedEffect * wheelImgSize);
+        }
+    }
+
+    private void UpdateParticles(TetrisBlockStaticValue.BlockEffect blockEffect)
+    {
+        DisableParticles();
+        // TODO : Add all effects
+        // TODO : Active explosion when grounded ?
+        switch (blockEffect)
+        {
+            case TetrisBlockStaticValue.BlockEffect.Neutral:
+
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Fire:
+                transform.Find("Fire").gameObject.SetActive(true);
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Ice:
+
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Explosion:
+                transform.Find("Explosion").gameObject.SetActive(true);
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Enemy:
+
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Malus:
+
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(blockEffect), blockEffect, null);
+        }
+    }
+
+    private void DisableParticles()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("Player"))
+        {
+            switch (_attachedEffect)
+            {
+                case TetrisBlockStaticValue.BlockEffect.Fire:
+                    Debug.Log("ça brule");
+                    Fire(collider);
+                    break;
+            }
         }
     }
 
@@ -152,10 +221,6 @@ public class TetrisBlock : MonoBehaviour
                 case TetrisBlockStaticValue.BlockEffect.Neutral:
 
                     break;
-                case TetrisBlockStaticValue.BlockEffect.Fire:
-                    Debug.Log("ça brule");
-                    Fire(collision);
-                    break;
                 case TetrisBlockStaticValue.BlockEffect.Ice:
                     Debug.Log("Glagla");
                     Ice();
@@ -174,7 +239,8 @@ public class TetrisBlock : MonoBehaviour
                     break;
             }
         }
-        else
+
+        if (gameObject.layer == 8)
         {
             switch (_attachedEffect)
             {
@@ -196,20 +262,6 @@ public class TetrisBlock : MonoBehaviour
 
         Boom();
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
-            if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
-            {
-                collision.gameObject.GetComponent<Character2DController>().diminishHealth(2f);
-            }
-        }
-    }
-
-
 
     private void Boom()
     {
@@ -236,19 +288,31 @@ public class TetrisBlock : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private static void Fire(Collision2D collision)
+    private void Fire(Collider2D collider)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collider.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Character2DController>().diminishHealth(0.3f);
+            collider.gameObject.GetComponent<Character2DController>().diminishHealth(0.005f);
         }
 
-        FindObjectOfType<AudioManager>().Play("Fire");
+        if (!isFireSoundPlaying)
+        {
+            isFireSoundPlaying = true;
+            FindObjectOfType<AudioManager>().Play("Fire");
+
+            StartCoroutine(WaitForFireSoundEnd());
+        }
+    }
+
+    private IEnumerator WaitForFireSoundEnd()
+    {
+        yield return new WaitForSeconds(0.340f);
+        isFireSoundPlaying = false;
     }
 
     private void Ice()
     {
-        gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 0;
+        //gameObject.GetComponent<Collider2D>().sharedMaterial.friction = 0;
     }
 
     private void Enemy()

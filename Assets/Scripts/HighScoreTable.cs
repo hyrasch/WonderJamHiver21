@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HighScoreTable : MonoBehaviour
@@ -25,6 +26,14 @@ public class HighScoreTable : MonoBehaviour
         _score = new Score();
         _score.LoadScore();
 
+        if (_score.Scores.Count < 10)
+        {
+            for (var i = _score.Scores.Count; i < 10; i++)
+            {
+                _score.AddScore("???", 0);
+            }
+        }
+
         foreach (var (item1, item2) in _score.Scores)
         {
             CreateHighScoreEntryTransform(item1, item2, _entryContainer, _highScoreTransformList);
@@ -33,11 +42,10 @@ public class HighScoreTable : MonoBehaviour
     
     private void CreateHighScoreEntryTransform(string pName, int score,Transform container, ICollection<Transform> transformList)
     {
-        const float templateHeight = 40f;
+        const float templateHeight = 40.8f;
         var entryTransform = Instantiate(_entryTemplate, container);
         var entryRectTransform = entryTransform.GetComponent<RectTransform>();
-        
-        entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
+        entryRectTransform.anchoredPosition = new Vector2(_entryTemplate.GetComponent<RectTransform>().anchoredPosition.x, -templateHeight * transformList.Count - 20.4f);
 
         var rank = transformList.Count + 1;
         string rankString;
@@ -87,5 +95,11 @@ public class HighScoreTable : MonoBehaviour
         }
         
         transformList.Add(entryTransform.transform);
+    }
+    
+    public void MainMenu() 
+    {
+        // TODO : Press X from controller
+        SceneManager.LoadScene("Menu");
     }
 }

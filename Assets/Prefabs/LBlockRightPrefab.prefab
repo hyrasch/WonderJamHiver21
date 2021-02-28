@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8202501638652082397}
   - component: {fileID: 8202501638652082398}
   - component: {fileID: 8202501638652082399}
-  - component: {fileID: 8671646634053197761}
   - component: {fileID: 2133877950701269260}
+  - component: {fileID: 4708397373551482142}
+  - component: {fileID: 8170821034423199792}
   m_Layer: 9
   m_Name: LBlockRightPrefab
   m_TagString: Block
@@ -108,7 +109,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
---- !u!60 &8671646634053197761
+--- !u!114 &2133877950701269260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8202501638652082400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2286848441c4afa479315b722f557044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticAttribute: {fileID: 1141849738734162183, guid: c69b41826dffc89408240b7eb0090b3b,
+    type: 3}
+  wheelSpeed: 0.005
+  nbWheelRotation: 15
+  wheelBorder: 192
+  wheelStep: 4
+  wheelImgSize: 64
+  enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
+    type: 3}
+  player: {fileID: 0}
+--- !u!60 &4708397373551482142
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,8 +140,8 @@ PolygonCollider2D:
   m_GameObject: {fileID: 8202501638652082400}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: dbd4740ce0b881b4e9526f22629eb7bf, type: 2}
-  m_IsTrigger: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -133,10 +156,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.5, y: 0.7246094}
-      - {x: 0.49414062, y: 0.7324219}
-      - {x: 0.47851562, y: 0.7480469}
-      - {x: 0.47460938, y: 0.75}
+    - - {x: 0.5, y: 0.72265625}
+      - {x: 0.4921875, y: 0.73046875}
+      - {x: 0.48632812, y: 0.73828125}
+      - {x: 0.48242188, y: 0.75}
       - {x: 0.02734375, y: 0.75}
       - {x: -0.00390625, y: 0.71875}
       - {x: -0.00390625, y: -0.21484375}
@@ -146,14 +169,14 @@ PolygonCollider2D:
       - {x: -0.03515625, y: -0.24609375}
       - {x: -0.46875, y: -0.24609375}
       - {x: -0.47851562, y: -0.25195312}
-      - {x: -0.48632812, y: -0.25976562}
       - {x: -0.5, y: -0.27539062}
-      - {x: -0.5, y: -0.72265625}
-      - {x: -0.47265625, y: -0.75}
+      - {x: -0.5, y: -0.7246094}
+      - {x: -0.48632812, y: -0.7402344}
+      - {x: -0.4765625, y: -0.75}
       - {x: 0.47265625, y: -0.75}
       - {x: 0.5, y: -0.72265625}
---- !u!114 &2133877950701269260
-MonoBehaviour:
+--- !u!60 &8170821034423199792
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -259,7 +282,7 @@ PrefabInstance:
     - target: {fileID: 7803914640961811732, guid: ad322ba8a4ca807468b5330cc760338a,
         type: 3}
       propertyPath: m_Name
-      value: LBlockExplosion
+      value: Explosion
       objectReference: {fileID: 0}
     - target: {fileID: 8148294712432724397, guid: ad322ba8a4ca807468b5330cc760338a,
         type: 3}
@@ -334,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 8149686515652534386, guid: abb86fd7f7f72bd45ae3c4e60110ea25,
         type: 3}
       propertyPath: m_Name
-      value: LBlockFireParticle
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 8149686515652534387, guid: abb86fd7f7f72bd45ae3c4e60110ea25,
         type: 3}
