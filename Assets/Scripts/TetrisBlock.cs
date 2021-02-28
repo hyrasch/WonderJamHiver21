@@ -265,9 +265,12 @@ public class TetrisBlock : MonoBehaviour
         if (collision.gameObject.layer == 8 && gameObject.layer != 8)
         {
             gameObject.layer = 8;
-           /* GameObject dust = Instantiate(_dustParticle.gameObject,transform);
-            dust.GetComponent<ParticleSystem>().Play();
-            StartCoroutine(DestroyParticle(dust, 1.5f));*/
+            for (int i = 0; i< collision.contacts.Length; i++) {
+                ContactPoint2D contactPoint = collision.GetContact(i);
+                Vector3 position = contactPoint.point;
+                GameObject dust = Instantiate(_dustParticle.gameObject, position, Quaternion.LookRotation(contactPoint.normal, Vector3.forward));
+                StartCoroutine(DestroyParticle(dust, 1.5f));
+            }
         }
 
         if (gameObject.layer != 8) return;

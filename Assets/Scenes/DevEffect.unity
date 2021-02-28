@@ -5404,6 +5404,9 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 0}
+  _explosionParticle: {fileID: 0}
+  _malusParticle: {fileID: 0}
   _indexIceSprite: 0
   _dustParticle: {fileID: 0}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
@@ -5427,6 +5430,9 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 0}
+  _explosionParticle: {fileID: 0}
+  _malusParticle: {fileID: 0}
   _indexIceSprite: 0
   _dustParticle: {fileID: 0}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
@@ -5450,6 +5456,9 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 0}
+  _explosionParticle: {fileID: 0}
+  _malusParticle: {fileID: 0}
   _indexIceSprite: 0
   _dustParticle: {fileID: 0}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
@@ -6031,6 +6040,9 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 0}
+  _explosionParticle: {fileID: 0}
+  _malusParticle: {fileID: 0}
   _indexIceSprite: 0
   _dustParticle: {fileID: 0}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
@@ -6389,6 +6401,9 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 0}
+  _explosionParticle: {fileID: 0}
+  _malusParticle: {fileID: 0}
   _indexIceSprite: 0
   _dustParticle: {fileID: 0}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
@@ -6612,6 +6627,9 @@ MonoBehaviour:
   wheelBorder: 192
   wheelStep: 4
   wheelImgSize: 64
+  _fireParticle: {fileID: 0}
+  _explosionParticle: {fileID: 0}
+  _malusParticle: {fileID: 0}
   _indexIceSprite: 0
   _dustParticle: {fileID: 0}
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
@@ -6627,6 +6645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: KeyBlockMalusParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4716281682625376905, guid: 895b27c47bad6a542a7f811ac969ac73,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5577663146479549466, guid: 895b27c47bad6a542a7f811ac969ac73,
         type: 3}
@@ -6706,7 +6729,7 @@ PrefabInstance:
     - target: {fileID: 7274574535512483235, guid: 68adc3e58388f5b4f96cd0be24febc90,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7274574535512483244, guid: 68adc3e58388f5b4f96cd0be24febc90,
         type: 3}
@@ -6766,7 +6789,62 @@ PrefabInstance:
     - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
         type: 3}
       propertyPath: ShapeModule.m_Scale.x
-      value: 1.5
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: VelocityModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: VelocityModule.x.scalar
+      value: -0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: useRigidbodyForVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: VelocityModule.x.minScalar
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: InheritVelocityModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: InheritVelocityModule.m_Curve.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7274574535512483245, guid: 68adc3e58388f5b4f96cd0be24febc90,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.minMaxState
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68adc3e58388f5b4f96cd0be24febc90, type: 3}
@@ -6973,6 +7051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: KeyBlockExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996116179483285250, guid: 2fd8326ad7d1fc9498648355af046e78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7996116179483285251, guid: 2fd8326ad7d1fc9498648355af046e78,
         type: 3}
