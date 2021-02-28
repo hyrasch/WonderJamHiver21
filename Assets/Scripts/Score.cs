@@ -38,13 +38,35 @@ public class Score
         Scores = Scores.Take(10).ToList();
     }
 
-    public void AddScore(string playerName, int playerScore)
+    public bool AddScore(string playerName, int playerScore)
     {
+        if(Scores.Count < 10)
+        {
+            Scores.Add(Tuple.Create(playerName, playerScore));
+            return true;
+        }
+        else {
+            SortScore();
+            CleanScores();
+            if(Scores[Scores.Count-1].Item2>playerScore)
+            {
+                return false;
+            } else
+            {
+                Scores.Add(Tuple.Create(playerName, playerScore));
+                SortScore();
+                CleanScores();
+                return true;
+            }
+        }
+
+        /*
         Scores.Add(Tuple.Create(playerName, playerScore));
 
         if (Scores.Count < 10) return;
         
         SortScore();
         CleanScores();
+        */
     }
 }

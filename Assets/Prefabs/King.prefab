@@ -143,7 +143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5915930417105684636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.092, y: -0.188, z: 0}
+  m_LocalPosition: {x: -1.952, y: -0.188, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5915930415744301599}
@@ -200,6 +200,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  score: 0
 --- !u!50 &5915930417105684638
 Rigidbody2D:
   serializedVersion: 4
@@ -250,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lenght: 7.77
+  columnlenght: 0
 --- !u!1 &5915930417484426134
 GameObject:
   m_ObjectHideFlags: 0

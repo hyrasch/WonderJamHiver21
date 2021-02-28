@@ -23,6 +23,8 @@ public class Ennemy : MonoBehaviour
     private float lastPos;
     private float currentPos;
 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,23 +33,44 @@ public class Ennemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        currentPos = rb.position.x;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
-        transform.position = Vector2.MoveTowards(rb.position, playerTransform.position, speed * Time.deltaTime);
-        
-        switch (facingRight)
+        var playerPositionwithoutY = playerTransform.position;  //ça faisait un peu bugger l'ennemi si on utilisait directement la position du joueur
+        playerPositionwithoutY.y = rb.position.y;
+
+        transform.position = Vector2.MoveTowards(rb.position, playerPositionwithoutY, speed * Time.deltaTime);
+        var movementX = currentPos - lastPos;
+
+        if (facingRight && movementX<0)
         {
-            case false when rb.velocity.x > 0:
-            case true when rb.velocity.x < 0:
-                Flip();
-                break;
+            Flip();
+        }else if(!facingRight && movementX > 0)
+        {
+            Flip();
         }
 
-        currentPos = rb.position.x;
+        animator.SetFloat("Speed", Mathf.Abs(movementX));
 
         if (Mathf.Abs(lastPos - currentPos) < jumpRadius && isGrounded == true)
         {
             rb.velocity = Vector2.up * jumpForce;
+        }
+
+        if (!isGrounded && rb.velocity.y > 0)
+        {
+            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsFalling", false);
+        }
+        else if (!isGrounded && rb.velocity.y < 0)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
+        }
+        else
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", false);
         }
 
         lastPos = currentPos;

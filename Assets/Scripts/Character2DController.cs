@@ -23,7 +23,7 @@ public class Character2DController : MonoBehaviour
     private float _move;
     private bool _jump;
 
-    public int score;
+    private int score;
 
     private void Awake() {
         // Getting components
@@ -99,5 +99,36 @@ public class Character2DController : MonoBehaviour
     private void GetInputs() {
         _move = _runner.GetAxis("Move Horizontal");
         _jump = _runner.GetButtonDown("Jump");
+    }
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Block")
+        {
+            Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
+            if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
+            {
+                this.health -= 11; //Dégats des blocs
+            }
+        } else if (collision.tag == "Ennemy")
+        {
+            this.health -= 2; //dégats des ennemis
+        }
+        if(health<=0)
+        {
+            FindObjectOfType<GameManager>().endGame();
+        }
+    }
+
+    public int GetScore()
+    {
+        return score + 4 + (int) Mathf.Round(gameObject.transform.localPosition.y);
+    }
+    
+    public void AddToScore(int value) 
+    {
+        score += value;
     }
 }

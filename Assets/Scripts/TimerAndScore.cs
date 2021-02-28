@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using TMPro;
 
@@ -9,11 +8,16 @@ public class TimerAndScore : MonoBehaviour
     TextMeshProUGUI timer;
 
     [SerializeField]
-    TextMeshProUGUI score;
+    TextMeshProUGUI scoreUI;
 
-    public GameObject Runner;
+    public int scoreP1;
+    public int scoreP2;
+
+    private bool turnP1 = true;
+
+    public Character2DController Runner;
     
-    private float timeRemaining = 300;
+    public float timeRemaining = 300;
     private bool timerIsRunning = false;
 
     // Start is called before the first frame update
@@ -39,13 +43,33 @@ public class TimerAndScore : MonoBehaviour
                 timerIsRunning = false;
             }
         }
-        
-        setScore(Runner.gameObject.GetComponent<Character2DController>().score);
+        setScore(Runner.GetScore());
     }
 
-    void setScore(int value)
+    public void setScore(int value)
     {
-        score.SetText(value.ToString());
+        if (turnP1)
+        {
+            scoreP1 = Mathf.Max(scoreP1, value - 1);
+        }
+        else
+        {
+            scoreP2 = Mathf.Max(scoreP2, value - 1);
+        }
+        scoreUI.SetText(turnP1 ? scoreP1.ToString() : scoreP2.ToString());
+    }
+
+    public void addToScore(int value)
+    {
+        if (turnP1)
+        {
+            scoreP1 += value;
+        }
+        else
+        {
+            scoreP2 += value;
+        }
+        setScore(turnP1 ? scoreP1 : scoreP2);
     }
 
     void setTimer(float timeToDisplay)

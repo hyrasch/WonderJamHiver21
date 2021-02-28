@@ -12,6 +12,11 @@ public class HighScoreTable : MonoBehaviour
 
     private Score _score;
 
+    public void display()
+    {
+        gameObject.SetActive(true);
+    }
+
     private void Awake()
     {
         _entryContainer = transform.Find("HighScoreEntryContainer");
