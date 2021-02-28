@@ -13,6 +13,8 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private Character2DController player;
     [SerializeField] private BlocSelection blockSelection;
 
+    [SerializeField] private Character2DController temp;
+
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
     private bool _canSelect = true;
