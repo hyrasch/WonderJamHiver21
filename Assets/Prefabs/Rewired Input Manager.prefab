@@ -1019,7 +1019,7 @@ MonoBehaviour:
           _customControllerSourceId: -1
           _controllerId: -1
     playerIdCounter: 3
-    actionIdCounter: 23
+    actionIdCounter: 24
     actionCategoryIdCounter: 4
     inputBehaviorIdCounter: 1
     mapCategoryIdCounter: 4

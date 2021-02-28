@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/ScoreBoard.unity
     guid: 52bb139f834467b4a9a09d1d9bfd4bec
+  - enabled: 1
+    path: Assets/Scenes/PreGameInfos.unity
+    guid: fa7d6039a0fe32f48bd4a6e942f353a2
   m_configObjects: {}

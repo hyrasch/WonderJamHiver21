@@ -25,7 +25,7 @@ public class MenuController : MonoBehaviour
     }
 
     public void NewGame() {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("PreGameInfos");
     }
 
     public void Scores() {

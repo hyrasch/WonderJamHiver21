@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Rewired;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PreGameManager : MonoBehaviour
 {
@@ -13,32 +14,43 @@ public class PreGameManager : MonoBehaviour
     private Player _master;
     private Player _runner;
 
-    private bool masterHadJoystick;
-    private bool masterJoystick;
-    private bool runnerHadJoystick;
-    private bool runnerJoystick;
+    private bool _masterHadJoystick;
+    private bool _masterJoystick;
+    private bool _runnerHadJoystick;
+    private bool _runnerJoystick;
 
     private void Awake() {
         _master = ReInput.players.GetPlayer("Master");
         _runner = ReInput.players.GetPlayer("Runner");
     }
 
+    private void Start() {
+        _master.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Master").enabled = true;
+        _runner.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Runner").enabled = true;
+        _master.controllers.maps.mapEnabler.Apply();
+        _runner.controllers.maps.mapEnabler.Apply();
+    }
+
     private void Update() {
-        masterHadJoystick = masterJoystick;
-        runnerHadJoystick = runnerJoystick;
+        if (_master.GetButtonLongPressDown("Select")) {
+            SceneManager.LoadScene("Main");
+        }
 
-        masterJoystick = _master.controllers.joystickCount > 0;
-        runnerJoystick = _runner.controllers.joystickCount > 0;
+        _masterHadJoystick = _masterJoystick;
+        _runnerHadJoystick = _runnerJoystick;
 
-        switch (masterHadJoystick) {
-            case false when masterJoystick: {
+        _masterJoystick = _master.controllers.joystickCount > 0;
+        _runnerJoystick = _runner.controllers.joystickCount > 0;
+
+        switch (_masterHadJoystick) {
+            case false when _masterJoystick: {
                 foreach (var img in joysticksMaster)
                     img.SetActive(true);
                 foreach (var img in keyboardsMaster)
                     img.SetActive(false);
                 break;
             }
-            case true when !masterJoystick: {
+            case true when !_masterJoystick: {
                 foreach (var img in joysticksMaster)
                     img.SetActive(false);
                 foreach (var img in keyboardsMaster)
@@ -47,15 +59,15 @@ public class PreGameManager : MonoBehaviour
             }
         }
 
-        switch (runnerHadJoystick) {
-            case false when runnerJoystick: {
+        switch (_runnerHadJoystick) {
+            case false when _runnerJoystick: {
                 foreach (var img in joysticksRunner)
                     img.SetActive(true);
                 foreach (var img in keyboardsRunner)
                     img.SetActive(false);
                 break;
             }
-            case true when !runnerJoystick: {
+            case true when !_runnerJoystick: {
                 foreach (var img in joysticksRunner)
                     img.SetActive(false);
                 foreach (var img in keyboardsRunner)
