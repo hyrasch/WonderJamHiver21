@@ -20,4 +20,7 @@ public class TetrisBlockStaticValue : MonoBehaviour
 
     [SerializeField]
     public List<float> _effectProbabilty = new List<float>();
+
+    [SerializeField]
+    public List<Sprite> _iceSprites = new List<Sprite>();
 }
