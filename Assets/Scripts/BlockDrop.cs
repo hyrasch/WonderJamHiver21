@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Rewired;
 using Random = UnityEngine.Random;
 
 public class BlockDrop : MonoBehaviour
@@ -16,28 +17,47 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private BlocSelection blockSelection;
     [SerializeField] private TextMeshProUGUI textEffect;
 
+    private Player _master;
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
     private bool _canSelect = true;
     public bool turnP1;
+
+    bool _statusDrop;
+
+    void Awake() {
+        _master = ReInput.players.GetPlayer("Master"); 
+    }
+
+    private void Start()
+    {
+        _master.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Master").enabled = true;
+        _master.controllers.maps.mapEnabler.Apply();
+    }
+
     public void setTurnP2()
     {
         turnP1 = false;
     }
     private void Update()
     {
-        GetNextBlock();
+        if (!_statusDrop)
+        {
+            GetNextBlock();
+        }
+        else {
+            DropBlock();
+        }
         
         if (_block == null) return;
 
         MoveBlock();
         RotateBlock();
-        DropBlock();
     }
 
     private void GetNextBlock()
     {
-        if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
+        if (!_master.GetButtonDown("Select") || !_canSelect  || _block != null) return;
 
         _block = blockSelection.SelectBlock();
         _block.SetActive(true);
@@ -47,29 +67,23 @@ public class BlockDrop : MonoBehaviour
         _tetrisBlock.InitWheel(wheel, textEffect);
         _tetrisBlock.SpawnInGameWorld();
         _canSelect = false;
+        _statusDrop = true;
     }
 
     private void MoveBlock()
     {
         var blockTransform = _block.transform;
-        if (Input.GetKey(KeyCode.A))
-        {
-            blockTransform.position += new Vector3(-5f, 0f, 0f) * Time.deltaTime;
-        }
-        else if (Input.GetKey(KeyCode.E))
-        {
-            blockTransform.position += new Vector3(5f, 0f, 0f) * Time.deltaTime;
-        }
+        blockTransform.position += new Vector3(_master.GetAxis("Move Horizontal")*5f, 0f, 0f) * Time.deltaTime;
         blockTransform.position = new Vector2(blockTransform.position.x, parent.position.y);
     }
 
     private void RotateBlock()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (_master.GetButtonDown("Rotate Left"))
         {
             _tetrisBlock.RotateLeft();
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (_master.GetButtonDown("Rotate Right"))
         {
             _tetrisBlock.RotateRight();
         }
@@ -77,13 +91,14 @@ public class BlockDrop : MonoBehaviour
 
     private void DropBlock()
     {
-        if (!Input.GetKeyDown(KeyCode.Return)) return;
+        if (!_master.GetButtonDown("Select")) return;
 
         var rigidBody = _block.GetComponent<Rigidbody2D>();
         rigidBody.constraints = RigidbodyConstraints2D.None;
         rigidBody.gravityScale = fallSpeed;
         _block = null;
 
+        _statusDrop = false;
         StartCoroutine(UpdateDropTimer());
     }
 

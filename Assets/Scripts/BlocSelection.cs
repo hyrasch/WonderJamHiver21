@@ -122,7 +122,7 @@ public class BlocSelection : MonoBehaviour
         while (true) {
             float step = distanceToTravel * Time.deltaTime;
             foreach (RectTransform rect in _blockPosition) {
-                rect.anchoredPosition += step * travelDirection;
+                if (rect != null) rect.anchoredPosition += step * travelDirection;
             }
 
             saveDistanceTraveled += step;
