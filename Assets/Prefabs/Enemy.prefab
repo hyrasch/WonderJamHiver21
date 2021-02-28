@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2551025769951268547}
   - component: {fileID: 2551025769951268551}
   m_Layer: 0
-  m_Name: Ennemy
+  m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,9 +176,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 5915930417105684632, guid: 2f79a0764ae0bca45af84cede8c1298a,
+    type: 3}
   speed: 1
   jumpForce: 8
+  jumpRadius: 0.001
   groundCheck: {fileID: 2551025769540822532}
   checkRadius: 0.5
   whatIsGround:

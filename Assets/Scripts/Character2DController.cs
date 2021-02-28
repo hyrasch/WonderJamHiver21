@@ -23,10 +23,12 @@ public class Character2DController : MonoBehaviour
     private float _move;
     private bool _jump;
 
+    public int score;
+
     private void Awake() {
         // Getting components
         _rb = GetComponent<Rigidbody2D>();
-        _runner = ReInput.players.GetPlayer(1);
+        _runner = ReInput.players.GetPlayer("Runner");
     }
 
     private void Start() {
@@ -38,8 +40,13 @@ public class Character2DController : MonoBehaviour
 
         _extraJumps = extraJumpsValue;
 
-        // Enabling gameplay mode
-        _runner.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Gameplay").enabled = true;
+        // Enabling runner mode
+        foreach (var ruleSet in _runner.controllers.maps.mapEnabler.ruleSets)
+            ruleSet.enabled = false;
+        _runner.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Runner").enabled = true;
+        _runner.controllers.maps.mapEnabler.Apply();
+
+        score = 0;
     }
 
     private void FixedUpdate() {

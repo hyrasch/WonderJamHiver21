@@ -29,7 +29,7 @@ public class BlockDrop : MonoBehaviour
     {
         if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
         
-        _block = Instantiate(RandomBlock(), parent);
+        _block = Instantiate(RandomBlock(), new Vector3(parent.position.x, parent.position.y, 0), Quaternion.identity);
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
         _tetrisBlock.InitWheel(wheel);
         _tetrisBlock.SpawnInGameWorld();
