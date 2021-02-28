@@ -390,6 +390,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f79a0764ae0bca45af84cede8c1298a, type: 3}
+--- !u!114 &48354619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5915930417105684639, guid: 2f79a0764ae0bca45af84cede8c1298a,
+    type: 3}
+  m_PrefabInstance: {fileID: 48354618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384672369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02c6997002cc98f4f9270d5ff31bc074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &70868064
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2459,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850941643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.020001, y: -1.3999993, z: -10}
+  m_LocalPosition: {x: 2.02, y: -1.3999993, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 951352022}
@@ -2722,9 +2734,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: {fileID: 1122883733}
-  scoreUI: {fileID: 0}
+  scoreUI: {fileID: 565643522}
   score: 0
-  Runner: {fileID: 0}
+  Runner: {fileID: 48354619}
   timeRemaining: 300
 --- !u!114 &944633933
 MonoBehaviour:
@@ -4085,7 +4097,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1450181591}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.020001, y: -1.3999993, z: -10}
+  m_LocalPosition: {x: 2.02, y: -1.3999993, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

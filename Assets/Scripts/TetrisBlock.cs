@@ -119,7 +119,7 @@ public class TetrisBlock : MonoBehaviour
                 tmpScore+=8;
                 break;
         }
-        player.AddToScore(tmpScore);
+        //player.AddToScore(tmpScore);
 
         if (_wheel == null) yield break;
         {
