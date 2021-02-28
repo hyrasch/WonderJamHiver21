@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,6 +11,7 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private float fallSpeed;
     [SerializeField] private SpriteRenderer wheel;
     [SerializeField] private Character2DController player;
+    [SerializeField] private BlocSelection blockSelection;
 
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
@@ -31,8 +31,11 @@ public class BlockDrop : MonoBehaviour
     private void GetNextBlock()
     {
         if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
+
+        _block = blockSelection.SelectBlock();
+        _block.transform.parent = parent;
+        _block.SetActive(true);
         
-        _block = Instantiate(RandomBlock(), new Vector3(parent.position.x, parent.position.y, 0), Quaternion.identity);
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
         _tetrisBlock.player = player;
         _tetrisBlock.InitWheel(wheel);

@@ -55,7 +55,7 @@ public class BlocSelection : MonoBehaviour
     {
         GameObject block = Instantiate(_blockTemplate[BlockType]);
         SpriteRenderer blockRenderer = block.GetComponent<SpriteRenderer>();
-        GameObject blockUIRenderer= Instantiate(_spriteRendererTemplate, Vector3.zero, Rotation, transform);
+        GameObject blockUIRenderer= Instantiate(_spriteRendererTemplate, Vector3.zero, Quaternion.identity, transform);
         blockUIRenderer.GetComponent<RectTransform>().anchoredPosition = Position;
         Image blockUIImage = blockUIRenderer.GetComponent<Image>();
         blockUIImage.sprite = blockRenderer.sprite;

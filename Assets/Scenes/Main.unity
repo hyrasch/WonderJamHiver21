@@ -1868,6 +1868,7 @@ MonoBehaviour:
   fallSpeed: 0.25
   wheel: {fileID: 477715221}
   player: {fileID: 48354619}
+  blockSelection: {fileID: 685783092}
 --- !u!4 &656252792
 Transform:
   m_ObjectHideFlags: 0
@@ -2735,7 +2736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timer: {fileID: 1122883733}
   scoreUI: {fileID: 565643522}
-  score: 0
+  scoreP1: 0
+  scoreP2: 0
   Runner: {fileID: 48354619}
   timeRemaining: 300
 --- !u!114 &944633933
