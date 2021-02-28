@@ -27,6 +27,8 @@ public class Character2DController : MonoBehaviour
     private bool _jump;
 
     private int score;
+    private int scoreP1;
+    private int scoreP2;
     
     private bool _fallOnPlayer;
 
@@ -66,7 +68,6 @@ public class Character2DController : MonoBehaviour
 
         if (_fallOnPlayer)
         {
-            Debug.Log("Ouch");
             diminishHealth(2f);
         }
 

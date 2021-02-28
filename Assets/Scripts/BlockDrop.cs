@@ -19,7 +19,7 @@ public class BlockDrop : MonoBehaviour
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
     private bool _canSelect = true;
-    public bool turnP1 =true;
+    public bool turnP1;
     public void setTurnP2()
     {
         turnP1 = false;
