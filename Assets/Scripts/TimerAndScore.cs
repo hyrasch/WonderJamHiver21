@@ -17,7 +17,7 @@ public class TimerAndScore : MonoBehaviour
     public int scoreP1;
     public int scoreP2;
 
-    private bool turnP1 = true;
+    public bool turnP1;
 
     public Character2DController Runner;
     

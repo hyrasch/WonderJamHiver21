@@ -7,8 +7,8 @@ public class PostGameUIManager : MonoBehaviour
 {
     bool gameIsEnded = false;
     public GameOverScreen gameOverScreen;
-    //public Canvas CanvasUI;
     public Canvas gameUICanvas;
+
     public void endGame()
     {
         BlockDrop bd = FindObjectOfType<BlockDrop>();
@@ -17,20 +17,20 @@ public class PostGameUIManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameIsEnded = true;
-            
-            //CanvasUI.gameObject.SetActive(false);
+
             gameUICanvas.gameObject.SetActive(false);
             gameOverScreen.setup(ts.scoreP1, ts.scoreP2);
-
-        } else
+        }
+        else
         {
             bd.setTurnP2();
             ts.setTurn2();
-            Debug.Log(bd.turnP1);
-            DontDestroyOnLoad(bd);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            GameObject[] blocks = GameObject.FindGameObjectsWithTag("Block");
+            foreach (GameObject block in blocks)
+            {
+                Destroy(block);
+            }
         }
-
     }
-
 }

@@ -118,27 +118,72 @@ public class TetrisBlock : MonoBehaviour
         _textUnderWheel.text = _textEffects[(int) _attachedEffect];
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
 
-        int tmpScore = 0;
-        switch (_attachedEffect)
+        GameObject scoreGo = GameObject.Find("/gameUICanvas/timerEtScore");
+        if (scoreGo != null)
         {
-            case TetrisBlockStaticValue.BlockEffect.Neutral:
-                tmpScore++;
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Enemy:
-                tmpScore += 10;
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Explosion:
-                tmpScore += 10;
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Fire:
-                tmpScore += 5;
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Ice:
-                tmpScore += 6;
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Malus:
-                tmpScore += 8;
-                break;
+            switch (_attachedEffect)
+            {
+                case TetrisBlockStaticValue.BlockEffect.Neutral:
+                    if (scoreGo.GetComponent<TimerAndScore>().turnP1)
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP1++;
+                    }
+                    else
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP2++;
+                    }
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Enemy:
+                    if (scoreGo.GetComponent<TimerAndScore>().turnP1)
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP1+=10;
+                    }
+                    else
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP2+=10;
+                    }
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Explosion:
+                    if (scoreGo.GetComponent<TimerAndScore>().turnP1)
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP1+=10;
+                    }
+                    else
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP2+=10;
+                    }
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Fire:
+                    if (scoreGo.GetComponent<TimerAndScore>().turnP1)
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP1+=5;
+                    }
+                    else
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP2+=5;
+                    }
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Ice:
+                    if (scoreGo.GetComponent<TimerAndScore>().turnP1)
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP1+=6;
+                    }
+                    else
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP2+=6;
+                    }
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Malus:
+                    if (scoreGo.GetComponent<TimerAndScore>().turnP1)
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP1+=8;
+                    }
+                    else
+                    {
+                        scoreGo.GetComponent<TimerAndScore>().scoreP2+=8;
+                    }
+                    break;
+            }
         }
         //player.AddToScore(tmpScore);
 
