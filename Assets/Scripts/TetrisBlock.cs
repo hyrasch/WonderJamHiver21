@@ -21,7 +21,6 @@ public class TetrisBlock : MonoBehaviour
     private void Start()
     {
         InitAttr();
-        this.gameObject.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -100f);
     }
 
     private void InitAttr()
@@ -197,6 +196,20 @@ public class TetrisBlock : MonoBehaviour
         Boom();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            Rigidbody2D rb = gameObject.GetComponent<Rigidbody2D>();
+            if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
+            {
+                collision.gameObject.GetComponent<Character2DController>().diminishHealth(2f);
+            }
+        }
+    }
+
+
+
     private void Boom()
     {
         var colliders = Physics2D.OverlapCircleAll(transform.position, 2);
@@ -226,7 +239,7 @@ public class TetrisBlock : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<Character2DController>().health -= .1f;
+            collision.gameObject.GetComponent<Character2DController>().diminishHealth(0.3f);
         }
 
         FindObjectOfType<AudioManager>().Play("Fire");

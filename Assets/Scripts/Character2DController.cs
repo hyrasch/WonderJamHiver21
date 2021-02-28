@@ -110,15 +110,18 @@ public class Character2DController : MonoBehaviour
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
             {
-                this.health -= 11; //Dégats des blocs
+                diminishHealth(1f); //Dégats des blocs
             }
-        } else if (collision.tag == "Ennemy")
-        {
-            this.health -= 2; //dégats des ennemis
         }
-        if(health<=0)
+    }
+
+    public void diminishHealth(float damage)
+    {
+        health= health- damage;
+        Debug.Log(health);
+        if (health <= 0.01)
         {
-            FindObjectOfType<GameManager>().endGame();
+            FindObjectOfType<PostGameUIManager>().endGame();
         }
     }
 
