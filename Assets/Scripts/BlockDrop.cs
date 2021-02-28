@@ -43,7 +43,7 @@ public class BlockDrop : MonoBehaviour
         _block.SetActive(true);
         
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
-        _tetrisBlock.player = player;
+        //_tetrisBlock.player = player;
         _tetrisBlock.InitWheel(wheel, textEffect);
         _tetrisBlock.SpawnInGameWorld();
         _canSelect = false;

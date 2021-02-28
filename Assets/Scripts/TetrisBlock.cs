@@ -20,7 +20,6 @@ public class TetrisBlock : MonoBehaviour
     private Image _wheel;
     private TextMeshProUGUI _textUnderWheel;
     public GameObject enemyPrefab;
-    public Character2DController player;
 
     private readonly List<string> _textEffects = new List<string>
     {
@@ -279,7 +278,7 @@ public class TetrisBlock : MonoBehaviour
 
             if (rb.CompareTag("Player"))
             {
-                rb.gameObject.GetComponent<Character2DController>().health -= .5f;
+                rb.gameObject.GetComponent<Character2DController>().diminishHealth(.5f);
             }
         }
 
