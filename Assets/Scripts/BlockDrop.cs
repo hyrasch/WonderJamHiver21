@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class BlockDrop : MonoBehaviour
@@ -9,7 +10,7 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private Transform parent;
     [SerializeField] private float timeBetweenDrop = 2f;
     [SerializeField] private float fallSpeed;
-    [SerializeField] private SpriteRenderer wheel;
+    [SerializeField] private Image wheel;
     [SerializeField] private Character2DController player;
     [SerializeField] private BlocSelection blockSelection;
 

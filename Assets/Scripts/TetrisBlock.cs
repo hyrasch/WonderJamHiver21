@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class TetrisBlock : MonoBehaviour
@@ -14,7 +15,7 @@ public class TetrisBlock : MonoBehaviour
 
     private TetrisBlockStaticValue.BlockEffect _attachedEffect;
     private SpriteRenderer _spriteComponent;
-    private SpriteRenderer _wheel;
+    private Image _wheel;
     public GameObject enemyPrefab;
     public Character2DController player;
 
@@ -64,7 +65,7 @@ public class TetrisBlock : MonoBehaviour
         StartCoroutine(ColorRandomizer());
     }
 
-    public void InitWheel(SpriteRenderer wheel)
+    public void InitWheel(Image wheel)
     {
         if (_wheel != null) return;
 
