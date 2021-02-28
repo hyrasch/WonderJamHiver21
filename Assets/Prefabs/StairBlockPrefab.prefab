@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7774709642219740946}
   - component: {fileID: 1402598486839499323}
   - component: {fileID: 1916989420514488308}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: StairBlockPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: dbd4740ce0b881b4e9526f22629eb7bf, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
