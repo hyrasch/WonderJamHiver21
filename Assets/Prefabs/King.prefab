@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5915930415744301598}
   - component: {fileID: 5915930415744301597}
   - component: {fileID: 5915930415744301596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 5915930417105684638}
   - component: {fileID: 5915930417105684637}
   - component: {fileID: 276843245}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: King
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -200,7 +200,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  score: 0
 --- !u!50 &5915930417105684638
 Rigidbody2D:
   serializedVersion: 4
@@ -261,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5915930417484426135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: groundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}

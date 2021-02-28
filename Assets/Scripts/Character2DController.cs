@@ -11,7 +11,7 @@ public class Character2DController : MonoBehaviour
     public float checkRadius;      // Radius of the ground checking object
     public LayerMask whatIsGround; // Ground layer
     public int extraJumpsValue;    // Number of extra jumps
-
+    public Vector3 respawnPoint;
     public UnityEvent onLandEvent;
     public UnityEvent onJumpEvent;
 
@@ -47,6 +47,7 @@ public class Character2DController : MonoBehaviour
         _runner.controllers.maps.mapEnabler.Apply();
 
         score = 0;
+        respawnPoint = this.transform.position;
     }
 
     private void FixedUpdate() {
@@ -110,16 +111,27 @@ public class Character2DController : MonoBehaviour
             Rigidbody2D rb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (rb && rb.velocity.y < 0) //si il a une vitesse vers le bas c'est qu'il n'est pas encore à terre
             {
-                this.health -= 11; //Dégats des blocs
+                diminishHealth(1f); //Dégats des blocs
             }
-        } else if (collision.tag == "Ennemy")
-        {
-            this.health -= 2; //dégats des ennemis
         }
-        if(health<=0)
+    }
+
+    public void diminishHealth(float damage)
+    {
+        health= health- damage;
+        if (health <= 0.01)
         {
-            FindObjectOfType<GameManager>().endGame();
+            respawn();
+            FindObjectOfType<PostGameUIManager>().endGame();
         }
+    }
+
+    public void respawn()
+    {
+        this.gameObject.transform.position = respawnPoint;
+        this.health = 1.0f;
+        this.score = 0;
+
     }
 
     public int GetScore()

@@ -34,7 +34,6 @@ public class BlocQuiApparaiteront : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Input.GetKeyDown("f"))  //TODO: à enlever, c'est là pour les tests
         {
             addBloc(UnityEngine.Random.Range(0,6), UnityEngine.Random.Range(0, 5));

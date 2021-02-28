@@ -26,6 +26,7 @@ public class Score
     public void LoadScore()
     {
         Scores = SaveSystem.LoadScore().Scores;
+        SortScore();
     }
 
     private void SortScore()
@@ -45,28 +46,16 @@ public class Score
             Scores.Add(Tuple.Create(playerName, playerScore));
             return true;
         }
-        else {
-            SortScore();
-            CleanScores();
-            if(Scores[Scores.Count-1].Item2>playerScore)
-            {
-                return false;
-            } else
-            {
-                Scores.Add(Tuple.Create(playerName, playerScore));
-                SortScore();
-                CleanScores();
-                return true;
-            }
-        }
 
-        /*
-        Scores.Add(Tuple.Create(playerName, playerScore));
-
-        if (Scores.Count < 10) return;
-        
         SortScore();
         CleanScores();
-        */
+        
+        if(Scores[Scores.Count - 1].Item2 > playerScore) return false;
+
+        Scores.Add(Tuple.Create(playerName, playerScore));
+        SortScore();
+        CleanScores();
+        
+        return true;
     }
 }

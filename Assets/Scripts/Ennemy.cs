@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ennemy : MonoBehaviour
 {
-    public int damage;
+    public float damage;
 
     public Transform playerTransform;
     public float speed;
@@ -92,7 +92,7 @@ public class Ennemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Character2DController>().health -= damage;
+            collision.gameObject.GetComponent<Character2DController>().diminishHealth(damage);
         }
     }
 

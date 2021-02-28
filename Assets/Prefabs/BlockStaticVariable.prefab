@@ -57,3 +57,10 @@ MonoBehaviour:
   - 0.05
   - 0.05
   - 0.05
+  _iceSprites:
+  - {fileID: 21300000, guid: 5fb5fdb562537914c80ecf608fe30718, type: 3}
+  - {fileID: 21300000, guid: d3d726ebe8b99744fb1b21b4e157b7df, type: 3}
+  - {fileID: 21300000, guid: ffbeeccbf03a1b14f81e3f1e5e8941db, type: 3}
+  - {fileID: 21300000, guid: 4303fa6f555068d48b81f165cca94c31, type: 3}
+  - {fileID: 21300000, guid: b866e783f80012b41831c50361b67e2b, type: 3}
+  - {fileID: 21300000, guid: 6f34b8568b16a774eb6d9f5000d59edf, type: 3}

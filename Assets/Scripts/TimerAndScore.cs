@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class TimerAndScore : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class TimerAndScore : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI scoreUI;
 
+    [SerializeField] private Image clockUI;
+    [SerializeField] private float partyTimer = 300f;
+
     public int scoreP1;
     public int scoreP2;
 
@@ -17,13 +21,14 @@ public class TimerAndScore : MonoBehaviour
 
     public Character2DController Runner;
     
-    public float timeRemaining = 300;
+    public float timeRemaining;
     private bool timerIsRunning = false;
 
     // Start is called before the first frame update
     void Start()
     {
         timerIsRunning = true;
+        timeRemaining = 300f;
     }
 
     // Update is called once per frame
@@ -43,7 +48,8 @@ public class TimerAndScore : MonoBehaviour
                 timerIsRunning = false;
             }
         }
-        setScore(Runner.GetScore());
+        clockUI.fillAmount = timeRemaining / partyTimer;
+        setScore(Mathf.Min(9999, Runner.GetScore()));
     }
 
     public void setScore(int value)
@@ -56,7 +62,9 @@ public class TimerAndScore : MonoBehaviour
         {
             scoreP2 = Mathf.Max(scoreP2, value - 1);
         }
-        scoreUI.SetText(turnP1 ? scoreP1.ToString() : scoreP2.ToString());
+        
+        var finalScore = Mathf.Min(9999, turnP1 ? scoreP1 : scoreP2);
+        scoreUI.SetText(finalScore.ToString());
     }
 
     public void addToScore(int value)
@@ -80,6 +88,11 @@ public class TimerAndScore : MonoBehaviour
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 
         timer.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void setTurn2()
+    {
+        turnP1 = !turnP1;
     }
 
 }
