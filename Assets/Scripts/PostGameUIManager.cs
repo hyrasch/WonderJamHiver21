@@ -16,9 +16,11 @@ public class PostGameUIManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameIsEnded = true;
-            gameOverScreen.setup(0, 1);
+            TimerAndScore ts = FindObjectOfType<TimerAndScore>();
             CanvasUI.gameObject.SetActive(false);
             gameUICanvas.gameObject.SetActive(false);
+            gameOverScreen.setup(ts.scoreP1, ts.scoreP2);
+
         }
     }
 }
