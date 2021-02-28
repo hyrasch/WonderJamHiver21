@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6522526573411130781}
   - component: {fileID: 6522526573411130754}
   - component: {fileID: 4776588961019941013}
-  - component: {fileID: 84941002950846644}
-  - component: {fileID: -6941815595702851087}
+  - component: {fileID: 5245024535656251952}
+  - component: {fileID: 7782697022230795397}
   m_Layer: 9
   m_Name: LongBlockPrefab
   m_TagString: Block
@@ -130,7 +130,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
   player: {fileID: 0}
---- !u!60 &84941002950846644
+--- !u!60 &5245024535656251952
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,7 +167,7 @@ PolygonCollider2D:
       - {x: 0.9824219, y: -0.24414062}
       - {x: 1, y: -0.2265625}
       - {x: 1, y: 0.22460938}
---- !u!60 &-6941815595702851087
+--- !u!60 &7782697022230795397
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

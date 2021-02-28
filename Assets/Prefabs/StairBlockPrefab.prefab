@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 7774709642219740957}
   - component: {fileID: 7774709642219740946}
   - component: {fileID: 1916989420514488308}
-  - component: {fileID: 9141879852508197106}
-  - component: {fileID: 2493819170504634440}
+  - component: {fileID: 4049937639308056668}
+  - component: {fileID: 4824274265492618227}
   m_Layer: 9
   m_Name: StairBlockPrefab
   m_TagString: Untagged
@@ -130,7 +130,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
   player: {fileID: 0}
---- !u!60 &9141879852508197106
+--- !u!60 &4049937639308056668
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,7 +183,7 @@ PolygonCollider2D:
       - {x: 0.02734375, y: -0.75}
       - {x: 0.47265625, y: -0.75}
       - {x: 0.5, y: -0.72265625}
---- !u!60 &2493819170504634440
+--- !u!60 &4824274265492618227
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
