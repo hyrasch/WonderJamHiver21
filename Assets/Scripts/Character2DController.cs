@@ -23,6 +23,8 @@ public class Character2DController : MonoBehaviour
     private float _move;
     private bool _jump;
 
+    private int score;
+
     private void Awake() {
         // Getting components
         _rb = GetComponent<Rigidbody2D>();
@@ -43,6 +45,8 @@ public class Character2DController : MonoBehaviour
             ruleSet.enabled = false;
         _runner.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Runner").enabled = true;
         _runner.controllers.maps.mapEnabler.Apply();
+
+        score = 0;
     }
 
     private void FixedUpdate() {
@@ -116,6 +120,15 @@ public class Character2DController : MonoBehaviour
         {
             FindObjectOfType<GameManager>().endGame();
         }
+    }
 
+    public int GetScore()
+    {
+        return score + 4 + (int)Mathf.Round(gameObject.transform.localPosition.y);
+    }
+    
+    public void AddToScore(int value) 
+    {
+        score += value;
     }
 }

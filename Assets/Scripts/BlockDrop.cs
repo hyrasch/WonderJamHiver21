@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BlockDrop : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private Transform parent;
     [SerializeField] private float timeBetweenDrop = 2f;
     [SerializeField] private float fallSpeed;
+    [SerializeField] private SpriteRenderer wheel;
+    [SerializeField] private Character2DController player;
 
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
@@ -18,18 +22,20 @@ public class BlockDrop : MonoBehaviour
         GetNextBlock();
         
         if (_block == null) return;
-        
+
         MoveBlock();
         RotateBlock();
         DropBlock();
     }
-    
+
     private void GetNextBlock()
     {
         if (!Input.GetKeyDown(KeyCode.Space) || !_canSelect  || _block != null) return;
         
-        _block = Instantiate(RandomBlock(), parent);
+        _block = Instantiate(RandomBlock(), new Vector3(parent.position.x, parent.position.y, 0), Quaternion.identity);
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
+        _tetrisBlock.player = player;
+        _tetrisBlock.InitWheel(wheel);
         _tetrisBlock.SpawnInGameWorld();
         _canSelect = false;
     }
@@ -45,6 +51,7 @@ public class BlockDrop : MonoBehaviour
         {
             blockTransform.position += new Vector3(5f, 0f, 0f) * Time.deltaTime;
         }
+        blockTransform.position = new Vector2(blockTransform.position.x, parent.position.y);
     }
 
     private void RotateBlock()

@@ -28,6 +28,10 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
 
+    public void Scores() {
+        Debug.Log("Scores");
+    }
+
     public void Quit() {
         Application.Quit();
     }

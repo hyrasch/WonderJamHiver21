@@ -389,7 +389,7 @@ MonoBehaviour:
     - _id: 0
       _name: Default
       _joystickAxisSensitivity: 1
-      _digitalAxisSimulation: 1
+      _digitalAxisSimulation: 0
       _digitalAxisSnap: 1
       _digitalAxisInstantReverse: 0
       _digitalAxisGravity: 3
@@ -813,7 +813,7 @@ MonoBehaviour:
         _axisRange: 0
         _invert: 0
         _axisContribution: 0
-        _keyboardKeyCode: 27
+        _keyboardKeyCode: 8
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
