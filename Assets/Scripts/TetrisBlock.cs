@@ -15,6 +15,7 @@ public class TetrisBlock : MonoBehaviour
     private SpriteRenderer _spriteComponent;
     private SpriteRenderer _wheel;
     public GameObject enemyPrefab;
+    public Character2DController player;
 
     private void Start()
     {
@@ -94,6 +95,30 @@ public class TetrisBlock : MonoBehaviour
         
         _attachedEffect = ChooseRandomEffect();
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
+
+        int tmpScore = 0;
+        switch (_attachedEffect)
+        {
+            case TetrisBlockStaticValue.BlockEffect.Neutral:
+                tmpScore++;
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Enemy:
+                tmpScore+=10;
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Explosion:
+                tmpScore+=10;
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Fire:
+                tmpScore+=5;
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Ice:
+                tmpScore+=6;
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Malus:
+                tmpScore+=8;
+                break;
+        }
+        player.AddToScore(tmpScore);
 
         if (_wheel == null) yield break;
         {
