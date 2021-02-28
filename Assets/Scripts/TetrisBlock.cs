@@ -325,13 +325,6 @@ public class TetrisBlock : MonoBehaviour
         Destroy((gameObject));
 
         FindObjectOfType<AudioManager>().Play("Enemy");
-        StartCoroutine(WaitDespawnEnemy(5f, newEnemy));
-    }
-
-    private IEnumerator WaitDespawnEnemy(float waitTime, GameObject _gameObject)
-    {
-        yield return new WaitForSeconds(waitTime);
-        Destroy(_gameObject);
     }
 
     private void Malus()
