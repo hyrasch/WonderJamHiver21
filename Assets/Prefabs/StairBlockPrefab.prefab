@@ -32,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2921387842984845477}
+  - {fileID: 4179665603766210709}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -191,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 5172320755258539255, guid: f6df212a25e42c646a0c88cb88a6a8c2,
         type: 3}
       propertyPath: m_Name
-      value: StaitBlockFireParticle
+      value: StairBlockFireParticle
       objectReference: {fileID: 0}
     - target: {fileID: 5172320755258539256, guid: f6df212a25e42c646a0c88cb88a6a8c2,
         type: 3}
@@ -255,4 +256,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5172320755258539256, guid: f6df212a25e42c646a0c88cb88a6a8c2,
     type: 3}
   m_PrefabInstance: {fileID: 8020097922556304477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8902953809085894063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7774709642219740956}
+    m_Modifications:
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723294046479572283, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+        type: 3}
+      propertyPath: m_Name
+      value: StairBlockExplosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 027212e8ff7ccd14b90a2b374a00d7e1, type: 3}
+--- !u!4 &4179665603766210709 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4723294046479572282, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 8902953809085894063}
   m_PrefabAsset: {fileID: 0}
