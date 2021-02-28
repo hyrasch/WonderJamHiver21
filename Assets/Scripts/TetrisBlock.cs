@@ -21,7 +21,7 @@ public class TetrisBlock : MonoBehaviour
     public GameObject enemyPrefab;
     public Character2DController player;
 
-    private List<string> textEffects = new List<string> { "Aucun effet...", "Aïe, ça chauffe !", "Attention, ça glisse !", "Et Bim Bam Boum !", "Soldat de l'ombre.", "Pas de chance..." };
+    private readonly List<string> _textEffects = new List<string> { "Aucun effet...", "Il fait chaud !", "Sol glissant !", "Bim Bam Boum !", "Soldat obscure.", "Pas de chance..." };
 
     private void Start()
     {
@@ -100,13 +100,13 @@ public class TetrisBlock : MonoBehaviour
                 }
             }
 
-            _textUnderWheel.text = textEffects[i % staticAttribute._effectColor.Count];
+            _textUnderWheel.text = _textEffects[i % staticAttribute._effectColor.Count];
             _spriteComponent.color = staticAttribute._effectColor[i % staticAttribute._effectColor.Count];
             yield return new WaitForSeconds(wheelSpeed * i);
         }
 
         _attachedEffect = ChooseRandomEffect();
-        _textUnderWheel.text = textEffects[(int) _attachedEffect];
+        _textUnderWheel.text = _textEffects[(int) _attachedEffect];
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
 
         int tmpScore = 0;
