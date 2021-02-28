@@ -112,7 +112,6 @@ public class Character2DController : MonoBehaviour
         {
             this.health -= 2; //dégats des ennemis
         }
-        Debug.Log(health);
         if(health<=0)
         {
             FindObjectOfType<GameManager>().endGame();

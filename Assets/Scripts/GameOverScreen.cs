@@ -9,28 +9,28 @@ public class GameOverScreen : MonoBehaviour
     public Text Player1Score;
     public Text Player2Score;
 
-    public Text Player1Name;
-    public Text Player2Name;
-
     public Text WinnerName;
-    public void setup(int score1,int score2,string name1,string name2)
+
+    public NamingScreen namingScreen;
+    int scorePlayer1;
+    int scorePlayer2;
+    public void setup(int score1,int score2)
     {
+        scorePlayer1 = score1;
+        scorePlayer2 = score2;
         Player1Score.text = score1.ToString()+" PTS";
         Player2Score.text = score2.ToString() + " PTS";
-        Player1Name.text = name1;
-        Player2Name.text = name2;
-        WinnerName.text = (score1 > score2 ? name1 : name2)+ " WINS !";
+        WinnerName.text = (score1 > score2 ? "PLAYER 1" : "PLAYER2")+ " WINS !";
         gameObject.SetActive(true);
     }
 
-    public void restartButton()
+    public void continueButton()
     {
-        this.gameObject.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //this.gameObject.SetActive(false);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //Passer aux écrans de noms
+        gameObject.SetActive(false);
+        namingScreen.setup(scorePlayer1, scorePlayer2);
     }
 
-    public void quitButton()
-    {
-        //SceneManager.LoadScene("MainMenu");
-    }
 }

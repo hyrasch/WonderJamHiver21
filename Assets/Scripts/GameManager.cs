@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Over");
             gameIsEnded = true;
-            gameOverScreen.setup(0,1,"TEST1","TEST2");
+            gameOverScreen.setup(0,1);
             //restart();
         }
     }
