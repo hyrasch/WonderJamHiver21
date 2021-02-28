@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -16,8 +17,11 @@ public class TetrisBlock : MonoBehaviour
     private TetrisBlockStaticValue.BlockEffect _attachedEffect;
     private SpriteRenderer _spriteComponent;
     private Image _wheel;
+    private TextMeshProUGUI _textUnderWheel;
     public GameObject enemyPrefab;
     public Character2DController player;
+
+    private List<string> textEffects = new List<string> { "Aucun effet...", "Aïe, ça chauffe !", "Attention, ça glisse !", "Et Bim Bam Boum !", "Soldat de l'ombre.", "Pas de chance..." };
 
     private void Start()
     {
@@ -65,11 +69,12 @@ public class TetrisBlock : MonoBehaviour
         StartCoroutine(ColorRandomizer());
     }
 
-    public void InitWheel(Image wheel)
+    public void InitWheel(Image wheel, TextMeshProUGUI text)
     {
         if (_wheel != null) return;
 
         _wheel = wheel;
+        _textUnderWheel = text;
     }
 
     private IEnumerator ColorRandomizer()
@@ -95,11 +100,13 @@ public class TetrisBlock : MonoBehaviour
                 }
             }
 
+            _textUnderWheel.text = textEffects[i % staticAttribute._effectColor.Count];
             _spriteComponent.color = staticAttribute._effectColor[i % staticAttribute._effectColor.Count];
             yield return new WaitForSeconds(wheelSpeed * i);
         }
 
         _attachedEffect = ChooseRandomEffect();
+        _textUnderWheel.text = textEffects[(int) _attachedEffect];
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
 
         int tmpScore = 0;
