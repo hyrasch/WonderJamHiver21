@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     bool gameIsEnded = false;
     public GameOverScreen gameOverScreen;
- 
 
     public void endGame()
     {
