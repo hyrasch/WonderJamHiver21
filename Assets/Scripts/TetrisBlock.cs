@@ -99,8 +99,8 @@ public class TetrisBlock : MonoBehaviour
         {
             var wheelTransform = _wheel.transform;
             var wheelPosition = wheelTransform.localPosition;
-            
-            wheelTransform.localPosition = new Vector2(wheelPosition.x, 192 * -1 - (int) _attachedEffect * wheelImgSize);
+
+            wheelTransform.localPosition = new Vector2(wheelPosition.x, wheelBorder * -1 + (int) _attachedEffect * wheelImgSize);
         }
     }
 

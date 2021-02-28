@@ -163,5 +163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staticAttribute: {fileID: 1141849738734162183, guid: c69b41826dffc89408240b7eb0090b3b,
     type: 3}
+  wheelSpeed: 0.005
+  nbWheelRotation: 15
+  wheelBorder: 192
+  wheelStep: 4
+  wheelImgSize: 64
   enemyPrefab: {fileID: 2551025769951268556, guid: 08b2a6b551b0c324ba4744fe9ed8eb84,
     type: 3}
