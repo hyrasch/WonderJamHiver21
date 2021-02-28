@@ -13,7 +13,7 @@ public class TimerAndScore : MonoBehaviour
 
     public GameObject Runner;
     
-    private float timeRemaining = 300;
+    public float timeRemaining = 300;
     private bool timerIsRunning = false;
 
     // Start is called before the first frame update

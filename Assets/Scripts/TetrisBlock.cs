@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -117,33 +118,31 @@ public class TetrisBlock : MonoBehaviour
         {
             case TetrisBlockStaticValue.BlockEffect.Neutral:
 
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Fire:
-                Debug.Log("ça brule");
-                Fire(collision);
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Ice:
-                Debug.Log("Glagla");
-                Ice();
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Explosion:
-                Debug.Log("Tic Tac");
-                StartCoroutine(WaitForBoom(2.0f));
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Enemy:
-                Debug.Log("Be careful");
-                Enemy();
-                break;
-            case TetrisBlockStaticValue.BlockEffect.Malus:
-                Debug.Log("Lucky you!");
-                Malus();
-                break;
-            default:
-                Debug.LogError("Attached effect missing. Check Tetris Block OnCollisionEnter2D.");
-                break;
-        }
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Fire:
+                    Debug.Log("ça brule");
+                    Fire(collision);
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Ice:
+                    Debug.Log("Glagla");
+                    Ice();
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Explosion:
+                    Debug.Log("Tic Tac");
+                    StartCoroutine(WaitForBoom(2.0f));
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Enemy:
+                    Debug.Log("Be careful");
+                    Enemy();
+                    break;
+                case TetrisBlockStaticValue.BlockEffect.Malus:
+                    Debug.Log("Bad luck!");
+                    Malus();
+                    break;
+            
 
-        //gameObject.GetComponent<Rigidbody2D>().isKinematic = true; A débattre
+            //gameObject.GetComponent<Rigidbody2D>().isKinematic = true; A débattre
+        }
     }
 
     private IEnumerator WaitForBoom(float waitTime)
@@ -167,6 +166,8 @@ public class TetrisBlock : MonoBehaviour
                 Destroy(rb.gameObject);
             }
         }
+        
+        Destroy(gameObject);
     }
 
     private static void Fire(Collision2D collision)
@@ -184,9 +185,10 @@ public class TetrisBlock : MonoBehaviour
 
     private void Enemy()
     {
-        var transformPosition = transform.position;
-        
-        Instantiate(enemyPrefab, new Vector3(transformPosition.x, transformPosition.y, 0), Quaternion.identity);
+        GameObject newEnemy = Instantiate(enemyPrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+        GameObject kingGo = GameObject.Find("/King");
+        if (kingGo != null)
+            newEnemy.gameObject.GetComponent<Ennemy>().playerTransform = kingGo.transform;
         Destroy((gameObject));
     }
 

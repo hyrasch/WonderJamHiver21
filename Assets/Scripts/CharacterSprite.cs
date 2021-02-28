@@ -34,7 +34,7 @@ public class CharacterSprite : MonoBehaviour
         switch (_isFacingRight) {
             case false when _rb.velocity.x > 0: // If looking left and going right
             case true when _rb.velocity.x < 0:                  // If looking right and going left
-                _rb.transform.localScale *= new Vector2(-1, 1); // Invert flipping
+                _spriteRenderer.flipX = !_spriteRenderer.flipX; // Invert flipping
                 _isFacingRight = !_isFacingRight;
                 // Invert facing status
                 break;
