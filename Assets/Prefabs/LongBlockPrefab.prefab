@@ -269,7 +269,7 @@ PrefabInstance:
     - target: {fileID: 8952688669033732593, guid: 8a9e3022b2499be44958a6ae60015a59,
         type: 3}
       propertyPath: m_Name
-      value: LongBlockFireParticle
+      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a9e3022b2499be44958a6ae60015a59, type: 3}
@@ -344,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 7336927769301944311, guid: 7033087d4ed01014abb8f0ae5b5c8efb,
         type: 3}
       propertyPath: m_Name
-      value: LongBlockExplosion
+      value: Explosion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7033087d4ed01014abb8f0ae5b5c8efb, type: 3}

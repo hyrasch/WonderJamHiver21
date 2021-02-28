@@ -244,7 +244,12 @@ PrefabInstance:
     - target: {fileID: 5537165019765280904, guid: f14359d9093133542a223839f348e255,
         type: 3}
       propertyPath: m_Name
-      value: KeyBlockFireParticle
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5537165019765280904, guid: f14359d9093133542a223839f348e255,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5537165019765280905, guid: f14359d9093133542a223839f348e255,
         type: 3}
@@ -319,7 +324,12 @@ PrefabInstance:
     - target: {fileID: 7996116179483285250, guid: 2fd8326ad7d1fc9498648355af046e78,
         type: 3}
       propertyPath: m_Name
-      value: KeyBlockExplosion
+      value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996116179483285250, guid: 2fd8326ad7d1fc9498648355af046e78,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7996116179483285251, guid: 2fd8326ad7d1fc9498648355af046e78,
         type: 3}

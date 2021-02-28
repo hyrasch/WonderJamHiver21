@@ -246,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 5172320755258539255, guid: f6df212a25e42c646a0c88cb88a6a8c2,
         type: 3}
       propertyPath: m_Name
-      value: StairBlockFireParticle
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 5172320755258539256, guid: f6df212a25e42c646a0c88cb88a6a8c2,
         type: 3}
@@ -376,7 +376,7 @@ PrefabInstance:
     - target: {fileID: 4723294046479572283, guid: 027212e8ff7ccd14b90a2b374a00d7e1,
         type: 3}
       propertyPath: m_Name
-      value: StairBlockExplosion
+      value: Explosion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 027212e8ff7ccd14b90a2b374a00d7e1, type: 3}

@@ -73,6 +73,11 @@ public class BlocSelection : MonoBehaviour
         blockUIImage.sprite = blockRenderer.sprite;
         blockUIImage.preserveAspect = true;
         KeyValuePair<GameObject, GameObject> res = new KeyValuePair<GameObject, GameObject>(blockUIRenderer, block);
+
+        foreach (Transform child in block.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
         block.SetActive(false);
         return res;
     }

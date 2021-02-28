@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using TMPro;
@@ -100,12 +101,14 @@ public class TetrisBlock : MonoBehaviour
                 }
             }
 
+            UpdateParticles((TetrisBlockStaticValue.BlockEffect) (i % staticAttribute._effectColor.Count));
             _textUnderWheel.text = _textEffects[i % staticAttribute._effectColor.Count];
             _spriteComponent.color = staticAttribute._effectColor[i % staticAttribute._effectColor.Count];
             yield return new WaitForSeconds(wheelSpeed * i);
         }
 
         _attachedEffect = ChooseRandomEffect();
+        UpdateParticles(_attachedEffect);
         _textUnderWheel.text = _textEffects[(int) _attachedEffect];
         _spriteComponent.color = staticAttribute._effectColor[(int) _attachedEffect];
 
@@ -140,6 +143,44 @@ public class TetrisBlock : MonoBehaviour
 
             wheelTransform.localPosition =
                 new Vector2(wheelPosition.x, wheelBorder * -1 + (int) _attachedEffect * wheelImgSize);
+        }
+    }
+
+    private void UpdateParticles(TetrisBlockStaticValue.BlockEffect blockEffect)
+    {
+        DisableParticles();
+        // TODO : Add all effects
+        // TODO : Active explosion when grounded ?
+        switch (blockEffect)
+        {
+            case TetrisBlockStaticValue.BlockEffect.Neutral:
+                
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Fire:
+                transform.Find("Fire").gameObject.SetActive(true);
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Ice:
+                
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Explosion:
+                transform.Find("Explosion").gameObject.SetActive(true);
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Enemy:
+                
+                break;
+            case TetrisBlockStaticValue.BlockEffect.Malus:
+                
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(blockEffect), blockEffect, null);
+        }
+    }
+
+    private void DisableParticles()
+    {
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
         }
     }
 

@@ -87,12 +87,6 @@ public class BlockDrop : MonoBehaviour
         StartCoroutine(UpdateDropTimer());
     }
 
-    private GameObject RandomBlock()
-    {
-        var index = Random.Range(0, blocks.Count);
-        return blocks[index];
-    }
-
     private IEnumerator UpdateDropTimer()
     {
         yield return new WaitForSeconds(timeBetweenDrop);

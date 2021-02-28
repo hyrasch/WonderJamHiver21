@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 5391104303655252403, guid: a28bbe65a8a8aef47911c0c4ac1549b1,
         type: 3}
       propertyPath: m_Name
-      value: SquareBlockFireParticle
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 5391104303655252404, guid: a28bbe65a8a8aef47911c0c4ac1549b1,
         type: 3}
@@ -285,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 1004623652083734259, guid: facf9d321c0e255499fdbff745359139,
         type: 3}
       propertyPath: m_Name
-      value: SquareBlockExplosion
+      value: Explosion
       objectReference: {fileID: 0}
     - target: {fileID: 3955324032976461884, guid: facf9d321c0e255499fdbff745359139,
         type: 3}
