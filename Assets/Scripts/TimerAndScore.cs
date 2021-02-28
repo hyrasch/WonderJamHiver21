@@ -9,9 +9,11 @@ public class TimerAndScore : MonoBehaviour
     TextMeshProUGUI timer;
 
     [SerializeField]
-    TextMeshProUGUI score;
+    TextMeshProUGUI scoreUI;
 
-    public GameObject Runner;
+    public int score;
+
+    public Character2DController Runner;
     
     public float timeRemaining = 300;
     private bool timerIsRunning = false;
@@ -39,13 +41,19 @@ public class TimerAndScore : MonoBehaviour
                 timerIsRunning = false;
             }
         }
-        
-        setScore(Runner.gameObject.GetComponent<Character2DController>().score);
+        setScore(Runner.GetScore());
     }
 
-    void setScore(int value)
+    public void setScore(int value)
     {
-        score.SetText(value.ToString());
+        score = value;
+        scoreUI.SetText(value.ToString());
+    }
+
+    public void addToScore(int value)
+    {
+        score += value;
+        setScore(score);
     }
 
     void setTimer(float timeToDisplay)

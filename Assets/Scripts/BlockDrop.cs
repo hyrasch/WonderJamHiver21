@@ -9,6 +9,7 @@ public class BlockDrop : MonoBehaviour
     [SerializeField] private float timeBetweenDrop = 2f;
     [SerializeField] private float fallSpeed;
     [SerializeField] private SpriteRenderer wheel;
+    [SerializeField] private Character2DController player;
 
     private GameObject _block;
     private TetrisBlock _tetrisBlock;
@@ -31,6 +32,7 @@ public class BlockDrop : MonoBehaviour
         
         _block = Instantiate(RandomBlock(), new Vector3(parent.position.x, parent.position.y, 0), Quaternion.identity);
         _tetrisBlock = _block.GetComponent<TetrisBlock>();
+        _tetrisBlock.player = player;
         _tetrisBlock.InitWheel(wheel);
         _tetrisBlock.SpawnInGameWorld();
         _canSelect = false;
