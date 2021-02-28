@@ -5,19 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
+    public GameObject mainMenuUI;
+    public GameObject scoreboardUI;
+    public GameObject backButton;
     public Transform selection;
 
-    private Player _master;
+    private Player _system;
 
     private void Awake() {
-        _master = ReInput.players.GetPlayer("Master");
+        _system = ReInput.players.GetPlayer("System");
     }
 
     private void Start() {
-        foreach (var ruleSet in _master.controllers.maps.mapEnabler.ruleSets)
-            ruleSet.enabled = false;
-        _master.controllers.maps.mapEnabler.ruleSets.Find(rs => rs.tag == "Menu").enabled = true;
-        _master.controllers.maps.mapEnabler.Apply();
+        EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }
 
     private void Update() {
@@ -29,10 +29,20 @@ public class MenuController : MonoBehaviour
     }
 
     public void Scores() {
-        SceneManager.LoadScene("ScoreBoard");
+        mainMenuUI.SetActive(false);
+        selection.gameObject.SetActive(false);
+        scoreboardUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(backButton);
     }
 
     public void Quit() {
         Application.Quit();
+    }
+
+    public void Back() {
+        scoreboardUI.SetActive(false);
+        mainMenuUI.SetActive(true);
+        selection.gameObject.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(EventSystem.current.firstSelectedGameObject);
     }
 }
