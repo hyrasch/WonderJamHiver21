@@ -6,6 +6,7 @@ public class PostGameUIManager : MonoBehaviour
     public bool gameIsEnded;
     public GameOverScreen gameOverScreen;
     public Canvas gameUICanvas;
+    public GameObject restartUI;
 
     private Player _master;
     private Player _runner;
@@ -36,6 +37,11 @@ public class PostGameUIManager : MonoBehaviour
             foreach (GameObject block in blocks) {
                 Destroy(block);
             }
+            
+            restartUI.SetActive(true);
+            restartUI.GetComponent<RestartController>().restart = true;
+            Time.timeScale = 0f;
+            _runner.isPlaying = _master.isPlaying = false;
         }
     }
 }

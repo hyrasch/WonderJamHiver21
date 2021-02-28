@@ -6,6 +6,7 @@ public class PauseController : MonoBehaviour
 {
     public GameObject pauseUI;
     public PostGameUIManager postGameUIManager;
+    public RestartController restartController;
 
     private Player _master;
     private Player _runner;
@@ -16,8 +17,8 @@ public class PauseController : MonoBehaviour
     }
 
     private void Update() {
-        if (postGameUIManager.gameIsEnded) return;
-        
+        if (postGameUIManager.gameIsEnded || restartController.restart) return;
+
         if (!_master.GetButtonDown("Pause") && !_runner.GetButtonDown("Pause")) return;
 
         pauseUI.SetActive(true);
