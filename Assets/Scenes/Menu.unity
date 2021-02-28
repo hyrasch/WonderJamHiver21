@@ -1403,7 +1403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewiredInputManager: {fileID: 1674622962}
   useAllRewiredGamePlayers: 0
-  useRewiredSystemPlayer: 0
+  useRewiredSystemPlayer: 1
   rewiredPlayerIds: 7f969800
   usePlayingPlayersOnly: 0
   playerMice: []
