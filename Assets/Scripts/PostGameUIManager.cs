@@ -19,7 +19,7 @@ public class PostGameUIManager : MonoBehaviour
             gameIsEnded = true;
 
             gameUICanvas.gameObject.SetActive(false);
-            gameOverScreen.setup(ts.scoreP1, ts.scoreP2);
+            gameOverScreen.setup(ts.scoreP2, ts.scoreP1);
         }
         else
         {
