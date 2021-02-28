@@ -48,11 +48,11 @@ public class BlocSelection : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        _selectBlock = _master.GetButtonDown("Select");
+        /*_selectBlock = _master.GetButtonDown("Select");
         if (!_selectBlock) return;
 
         GameObject newBlock = SelectBlock();
-        Destroy(newBlock);
+        Destroy(newBlock);*/
         //AddBlock(UnityEngine.Random.Range(0,6));
     }
 
@@ -122,7 +122,7 @@ public class BlocSelection : MonoBehaviour
         while (true) {
             float step = distanceToTravel * Time.deltaTime;
             foreach (RectTransform rect in _blockPosition) {
-                if (rect != null) rect.anchoredPosition += step * travelDirection;
+                rect.anchoredPosition += step * travelDirection;
             }
 
             saveDistanceTraveled += step;
